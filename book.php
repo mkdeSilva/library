@@ -16,11 +16,15 @@ $bookInfo = $result -> fetch_array();
 <body>
 	<header> <?php require_once('header.php') ?> </header>
 	<br><br><br><br><br>
+<div style="width: 100%;">
+	<div style="float:left; width: 50%">
 	<center>
 		<div>
 			<img height=400px src="<?php echo $bookInfo['imageLink'] ?>">
-			<br><br>
-			<br>
+		</div>
+	</div>
+
+	<div style="float:right; width: 50%">
 			<strong>Name:</strong><br>
 			<?php echo $bookInfo['bookName'] ?>
 			<br><br>
@@ -45,8 +49,9 @@ $bookInfo = $result -> fetch_array();
 			<input type="hidden" name="bookID" value="<?php echo $editID ?>">
 			<input type="submit" class="flatButton" value="Rent">
 			</form>
-
-		</div>
+	</div>
+	
+</div>
 	</center>
 
 </body>
