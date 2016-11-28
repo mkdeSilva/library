@@ -60,10 +60,6 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 						<label>image</label><br>
 						<input type="text" name="bookImage" class="flatInput" placeholder="insert link to image">
 						<br><br>
-						<!--
-							<label>Upload an Image</label><br>
-							<input type="file" name ="file" id=fileUpload">
-						-->
 					</div>
 					<div style="float:right">
 						<label>price</label><br>
@@ -87,18 +83,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 			<!-- VIEW BOOKS-->
 
 			<div style="display:none" id="viewBookForm">
-<!--				wussup we got books here<br>
-				<table>
-					<tr>
-						<th>Book Name</th>
-						<th>Book Author</th>
-					</tr>
-					<tr>
-						<td>Eragon</td>
-						<td>Christopher Paolini</td>
 
-					</tr>
-				</table>-->
 				<table>
 					<?php
 					$q="SELECT * FROM book;";

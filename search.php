@@ -30,6 +30,7 @@
     $result = $mysqli -> query($q);
     if ($result)
     {
+        $ids = array();
         $images = array();
         $bookNames = array();
         $bookAuthors = array();
@@ -37,6 +38,7 @@
         while($row = $result->fetch_assoc()){
 
             //storing these in arrays to use later
+            $ids[$i] = $row['bookID'];
             $images[$i] = $row['imageLink']; 
             $bookNames[$i] = $row['bookName'];
             $bookAuthors[$i] = $row['bookAuthor'];
@@ -51,7 +53,7 @@
             echo '<h2>Search Results for "' . $searchQuery . '" </h2><hr><br>';
 
             foreach($bookNames as $index => $name){
-                echo "<div style='padding: 40px'><img style = vertical-align:middle width=100em src=" . $images[$index] . ">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" . $name . "&nbsp&nbsp" . " - " . "&nbsp&nbsp" . $bookAuthors[$index] ."&nbsp". "</div><br><br>" ;
+                echo "<div style='padding: 40px'><a href='book.php?bookID=". $ids[$index] ."'><img style = vertical-align:middle width=100em src=" . $images[$index] . "></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <span class='flatInvertedLink'><a href='book.php?bookID=". $ids[$index]. "'>" . $name . "&nbsp&nbsp" . " - " . "&nbsp&nbsp" . $bookAuthors[$index] ."&nbsp". "</a></span></div><br><br>" ;
             }
 
             }

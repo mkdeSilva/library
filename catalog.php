@@ -51,11 +51,10 @@
 				$images[$i] = $row['imageLink']; 
 				$bookNames[$i] = $row['bookName'];
 				$bookAuthors[$i] = $row['bookAuthor'];
-				$i++;
+				$i++; 
 
 				//Images on the left followed by descriptions on the right
-				echo "<div><img href='book.php' style=vertical-align:middle width=100em src=" . $row['imageLink'] . ">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href='book.php'>" . $row['bookName'] . "&nbsp&nbsp" . " - " . "&nbsp&nbsp" . $row['bookAuthor'] ."&nbsp". "</a></div><br><br>" ;
-
+				echo "<div><a href='book.php?bookID=". $row['bookID'] ."'><img style='vertical-align:middle;' width=100em src=" . $row['imageLink'] . "></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <span class='flatInvertedLink'><a href='book.php?bookID=". $row['bookID'] ."'>" . $row['bookName'] . "&nbsp&nbsp" . " - " . "&nbsp&nbsp" . $row['bookAuthor'] ."&nbsp". "</a></span></div><br><br>" ;
 				//Same as above, trying to float left so multiple lines of text can appear beside an image
 				/*echo "
 					<div style='width: 400px'>  
@@ -67,7 +66,7 @@
 					<br style='clear:both' /><br>";*/
 			}
 			?>
-
+			<br><br>
 	<!--<center>
 		//Making the images appear on the top followed by their descriptions underneath
 		<div class="row">
