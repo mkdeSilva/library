@@ -54,7 +54,7 @@
 				$i++;
 
 				//Images on the left followed by descriptions on the right
-				echo "<div><img style=vertical-align:middle width=100em src=" . $row['imageLink'] . ">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp" . $row['bookName'] . "&nbsp&nbsp" . " - " . "&nbsp&nbsp" . $row['bookAuthor'] ."&nbsp". "</div><br><br>" ;
+				echo "<div><img href='book.php' style=vertical-align:middle width=100em src=" . $row['imageLink'] . ">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href='book.php'>" . $row['bookName'] . "&nbsp&nbsp" . " - " . "&nbsp&nbsp" . $row['bookAuthor'] ."&nbsp". "</a></div><br><br>" ;
 
 				//Same as above, trying to float left so multiple lines of text can appear beside an image
 				/*echo "
