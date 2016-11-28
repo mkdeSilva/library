@@ -33,7 +33,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 					<li><a href='studentMenu.php'><h2><span class="active">View Students</span></h2></a></li>
 				</ul>
 			</div>
-		</center><br><br><br><br>
+		</center><br><br><br><br><br><br><br>
 
 	
 			<?php
