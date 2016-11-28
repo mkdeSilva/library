@@ -7,20 +7,17 @@ require_once('connect.php');
 
 <!DOCTYPE html>
 <html>
-
-
 <head>
     <title>Registration</title>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="design.css">
 </head>
 
-
 <body>
 	<header>
 		<?php require_once('header.php') ?>
 	</header>
-    
+        <br><br>
     <div class="container">
         <div id="allInputs">
             <center>
@@ -111,9 +108,6 @@ require_once('connect.php');
             <br><br>
             Age <br> <input type = "text" name = "age" class="flatTextbox" > <br><br> 
             E-Mail <br> <input type = "text" name = "email" class="flatTextbox" > <br><br>
-
-            
-
         </form>
     </center>
 </div>
@@ -142,8 +136,5 @@ require_once('connect.php');
         });
     });
 </script>
-
 </body>
-
-
 </html>
