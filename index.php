@@ -17,8 +17,7 @@
 <body>
 	<center>
 	<header><?php require_once('header.php'); ?></header>
-	<img src="pictures/InovaAntaresLogo2.jpg" style="width: 100%; height:auto" />
-    <h2><span class="flatIndexLink"><a href="login.php">Please click here to log in to the system.</a></span></h2>
+	<img src="pictures/InovaAntaresLogo2.jpg" style="width: 80%; height:auto" />
 
     </center>
 </body>
