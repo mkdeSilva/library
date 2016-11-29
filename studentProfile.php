@@ -40,14 +40,29 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 
 		</center><br><br><br><br><br><br>
 
+<div style="width: 100%;">
+	<div style="float:left; width: 50%">
+	<center>
 		<?php 
-		echo "Your name is: " . $studentInfo['fName'] . " " . $studentInfo['lName'] . "<br><Faculty: " . $studentInfo['faculty'] . "<br> Email: " . $studentInfo['email'] . "<br>Username: " . $studentInfo['username'] . "<br>Gender: " . $studentInfo['gender'] . "<br>Age: " . $studentInfo['age'] . "<br>Overdue pay: " . $studentInfo['overduePay'] . "<br><br>";
+		echo   
+			 "Full Name: " . $studentInfo['fName'] . " " . $studentInfo['lName'] .
+			 "<br><br>Faculty: " . $studentInfo['faculty'] . 
+			 "<br><br>Email: " . $studentInfo['email'] . 
+			 "<br><br>Username: " . $studentInfo['username'] . 
+			 "<br><br>Gender: " . $studentInfo['gender'] . 
+			 "<br><br>Age: " . $studentInfo['age'] . 
+			 "<br><br>Overdue pay: " . $studentInfo['overduePay'] . "<br><br>";
 
 		if ($studentInfo['anyRent'] == 1){
 			$checkStudentBooksQuery = "SELECT * FROM bookCopies INNER JOIN rentDetails ON bookCopies.bookCopyID = rentDetails.bookCopyID INNER JOIN book ON book.bookID = bookCopies.bookID WHERE studentID = '$studentID';";
 			//echo $checkStudentBooksQuery;
 			$result = $mysqli -> query($checkStudentBooksQuery);
-?>
+		?>
+	</center>
+	</div>
+
+	<div style="float:right; width: 50%">
+	<center>
 			<table>
 			<tr>
 
@@ -60,10 +75,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 			<th>Return</th>
 			</tr>
 
-			<?php 
-			while($row=$result->fetch_array())
-			{ 
-			?>
+			<?php while($row=$result->fetch_array()) { ?>
 			<tr>
 				<td><?=$row['bookName']?></td> 
 				<td><?=$row['bookAuthor']?></td>
@@ -78,12 +90,15 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 			
 				 ?>
 			</table>
+	</center>
+	</div>
+</div>
 			<?php
 		}else{
 			echo "<br><br><br><br><center><h2>You must login to see the contents of our website: <span class='flatLink'><a href = 'login.php'>Login</a></span></h2></center>";
 		}
 		?>
 
-	</body>
+</body>
 
-	</html>
+</html>
