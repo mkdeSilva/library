@@ -42,9 +42,7 @@ if ($description == '' || $name == '' || $author == '' || $price == '' || $genre
 			$insertBookCopyQuery = "INSERT INTO bookCopies(bookID) VALUES('$bookID');";
 			$insertResult = $mysqli -> query($insertBookCopyQuery);;
 		} 
-		echo $bookID;
-		echo "<br>";
-		echo $insertBookCopyQuery;
+	
 		?>
 		<br><br><hr>
 		<center>

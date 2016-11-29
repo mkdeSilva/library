@@ -45,6 +45,8 @@ if (isset($_SESSION['permission'])){
 	    //
 		$insertRentDetails = "INSERT INTO rentdetails(dateOfIssue,dateOfReturn, deposit,bookID,studentID,active) VALUES('$currentDate','$returnDate','$deposit','$editID','$studentID',1);";
 		$insertRentResult = $mysqli -> query($insertRentDetails);
+		require_once('updateBookCopies.php');
+		
 		header("Location: studentProfile.php");
 
 
