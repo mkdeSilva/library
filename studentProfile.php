@@ -41,7 +41,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 		</center><br><br><br><br><br><br>
 
 <div style="width: 100%;">
-	<div style="float:left; width: 50%">
+	<div>
 	<center>
 		<?php 
 		echo   
@@ -60,8 +60,8 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 		?>
 	</center>
 	</div>
-
-	<div style="float:right; width: 50%">
+<br>
+	<div>
 	<center>
 			<table>
 			<tr>
