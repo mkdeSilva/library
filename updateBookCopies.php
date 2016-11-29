@@ -8,6 +8,7 @@ $deleteResult = $mysqli -> query($deleteQuery);
 $queryGetRows = "SELECT * FROM BOOK;";
 $resultGetRows = $mysqli -> query($queryGetRows);
 
+
 while($row = $resultGetRows -> fetch_assoc()){
 	$bookID = $row['bookID'];
 	//for loop
