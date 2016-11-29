@@ -34,16 +34,19 @@ $editID = $_POST['bookID'];
 		$updateStudentResult = $mysqli -> query($updateStudentQuery);
 
 		//reserve bookCopy entry for student to have
-		$reserve = "SELECT * FROM bookCopies WHERE available = 1 AND bookID = '$editID' ORDER BY bookCopyID ACS LIMIT 1;";
+		$reserve = "SELECT * FROM bookCopies WHERE available = 1 AND bookID = '$editID' ORDER BY bookCopyID LIMIT 1;";
 		$reserveResult = $mysqli -> query($reserve);
-		$rowBookCopy = mysql_fetch_assoc($reserveResult);
-
+		$rowBookCopy = $reserveResult -> fetch_assoc();
 		$bookCopyID = $rowBookCopy['bookCopyID'];
 
 		//update bookCopy row
 
 		$updateBookCopyQuery = "UPDATE bookCopies SET available = 0 WHERE bookCopyID = '$bookCopyID';";
 		$updateBookCopyResult = $mysqli -> query($updateBookCopyQuery);
+
+		
+		
+
 		//add new entry into rent details
 		$currentDate = date("Y-m-d");
 		$d = strtotime("+1 week");
