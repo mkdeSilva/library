@@ -38,6 +38,11 @@ if (isset($_SESSION['permission'])){
 	    $d = strtotime("+1 week");
 	    $returnDate = date("Y-m-d",$d);
 	    $deposit = ($bookInfo['bookPrice']/10);
+	   	//INSERT into bookCopy
+	   	//$addNewCopyQuery = "INSERT INTO bookCopies(bookID) VALUES('$editID');";
+
+
+	    //
 		$insertRentDetails = "INSERT INTO rentdetails(dateOfIssue,dateOfReturn, deposit,bookID,studentID,active) VALUES('$currentDate','$returnDate','$deposit','$editID','$studentID',1);";
 		$insertRentResult = $mysqli -> query($insertRentDetails);
 		header("Location: studentProfile.php");

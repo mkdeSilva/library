@@ -34,11 +34,21 @@ if ($description == '' || $name == '' || $author == '' || $price == '' || $genre
 	$q = "INSERT INTO book(description,bookName,bookAuthor,bookPrice,bookGenre,pubDate,stock,imageLink) VALUES('$description','$name','$author','$price','$genre','$date','$stock','$image');";
 
 	$result = $mysqli -> query($q);
+	$bookID = $mysqli -> insert_id;
 
 	if($result){
+		for($i=0;$i<$stock;$i++){ 
+			//adding to bookCopies		
+			$insertBookCopyQuery = "INSERT INTO bookCopies(bookID) VALUES('$bookID');";
+			$insertResult = $mysqli -> query($insertBookCopyQuery);;
+		} 
+		echo $bookID;
+		echo "<br>";
+		echo $insertBookCopyQuery;
 		?>
 		<br><br><hr>
 		<center>
+
 		<h2>Added book!</h2>
 		<h2><span class=flatLink><a href="bookMenu.php">Go Back.</a></span></h2>
 		</center>
