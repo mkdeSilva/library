@@ -30,7 +30,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 			<ul>
 			<li><a href="studentHome.php"><h2> Welcome <?php echo $_SESSION['fName'];?> | </h2></a></li>
 			<li><a href='studentProfile.php'><h2><span> Profile </span> | </h2></a></li>
-			<li><a href='studentHistory.php'><h2><span> History </span> | </h2></a></li>
+			<li><a href='studentHistory.php'><h2><span class="active"> History </span> </h2></a></li>
 		</ul>
 	</div>
 </center>

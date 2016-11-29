@@ -28,9 +28,9 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 <center>
 	<div class="flatSidebar">
 		<ul>
-			<li><a href="studentHome.php"><h2> Welcome <?php echo $_SESSION['fName'];?> | </h2></a></li>
+			<li><a href="studentHome.php"><h2><span class="active"> Welcome <?php echo $_SESSION['fName'];?> | </span></h2></a></li>
 			<li><a href='studentProfile.php'><h2><span> Profile </span> | </h2></a></li>
-			<li><a href='studentHistory.php'><h2><span> History </span> | </h2></a></li>
+			<li><a href='studentHistory.php'><h2><span> History </span></h2></a></li>
 		</ul>
 
 		<br><br><br><br><br>
