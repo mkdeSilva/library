@@ -43,11 +43,10 @@ require_once('connect.php');
                 }
             }
             ?>
-
-            <div style="width: 100%;">
+          <div style="width: 100%;">
+            <div style="float:left; width: 50%">
 
                     <h3> Please fill in the information below: </h3>
-
                     <form id="studentRegisterForm" action="checkRegistration.php" method="POST">
                     <!-- to prevent errors -->
                     <input type ="hidden" name = "code" value=0>
@@ -62,7 +61,11 @@ require_once('connect.php');
                      <br><br>
                      Age <br> <input type = "text" name= "age" class="flatTextbox" > <br><br> 
                      E-Mail <br> <input type = "text" name= "email" class="flatTextbox" > <br><br>
-                    <h3> Create Your Log-In :</h3><hr><br>
+            </div>
+
+            <div style="float:right; width: 50%">
+                  <center>
+                    <h3> Create Your Log-In :</h3>
                     Choose Username <br> <input type = "text" name = "username" class="flatTextbox" > <br><br>
                     Choose Password <br> <input type = "password" name = "passwd" class="flatTextbox"  ><br><br>
                     Verify Password <br> <input type = "password" name = "passwdVerify" class="flatTextbox"  ><br><br>
@@ -70,10 +73,14 @@ require_once('connect.php');
                                  <input type = "hidden" name = "whichMember" value = "student">
 
                     <input type="submit" value="Sign Up!" class="flatButton">
-
+                  </center>
                     <br>
-        </form>
+            </div>
+                    </form>
+          </div>
 
+  <div style="width: 100%;">
+      <div style="float:left; width: 50%">
         <form id="staffRegisterForm" action="checkRegistration.php" method="POST" style="display:none">
             <span style="color:red">Staff Code </span><br> <input type ="password" name = "code" class="flatTextbox" ><br><br>
             First Name <br> <input type = "text" name = "fName" class="flatTextbox" > <br><br>
@@ -101,18 +108,23 @@ require_once('connect.php');
             <br><br>
             Age <br> <input type = "text" name = "age" class="flatTextbox" > <br><br> 
             E-Mail <br> <input type = "text" name = "email" class="flatTextbox" > <br><br>
+      </div>
+
+      <div style="float:right; width: 50%">
+          <center> 
             <h3> Create Your Log-In :  </h3>
-             <hr><br>
              Choose Username <br> <input type = "text" name = "username" class="flatTextbox" > <br><br>
              Choose Password <br> <input type = "password" name = "passwd" class="flatTextbox" ><br><br>
              Verify Password <br> <input type = "password" name = "passwdVerify" class="flatTextbox"  ><br><br>
              <input type = "hidden" name = "whichMember" value = "staff">
              <br><br>
-             <center>
+            <center>
                  <input type="submit" value="Sign Up!" class="flatButton">
              </center>           
             <br>
-              </center>
+          </center>
+      </div>
+  </div>
         </form>
     </center>
 </div>
