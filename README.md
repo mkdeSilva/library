@@ -1,1 +1,1 @@
-# library
+# the staff code for registering as a staff member is 'bananas' (without the quotes)
