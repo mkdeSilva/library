@@ -23,6 +23,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 	<br><br>
 
 	<?php 
+	echo "hi";
 	if (isset($_SESSION['permission'])){
 		if ($_SESSION['permission'] == 'admin'){ 
 			?>
