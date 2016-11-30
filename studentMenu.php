@@ -29,7 +29,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 			<div class="flatSidebar">
 				<ul>
 					<li><a href='bookMenu.php'><h2><span>Books</span> | </h2></a></li>
-					<li><a href='publisherMenu.php'><h2><span>Publishers</span> | </h2></a></li>
+					<li><a href='authorMenu.php'><h2><span>Authors</span> | </h2></a></li>
 					<li><a href='studentMenu.php'><h2><span class="active">View Students</span></h2></a></li>
 				</ul>
 			</div>

@@ -86,7 +86,7 @@ require_once('connect.php');
             First Name <br> <input type = "text" name = "fName" class="flatTextbox" > <br><br>
             Last Name <br> <input type = "text" name = "lName" class="flatTextbox" > <br><br>
             Job <br>
-            <select id="job" name ="job" class="flatDropdown" >
+            <select id="job" name ="job">
                 <option value="">--Choose One--</option>
                 <?php
                 $q ='SELECT jobID, jobTitle FROM jobs ORDER BY jobID DESC;';

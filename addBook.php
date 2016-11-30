@@ -3,12 +3,18 @@ require_once('connect.php');
 session_start();
 $description = addslashes($_POST['bookDescription']);
 $name = addslashes($_POST['bookName']);
-$author = addslashes($_POST['bookAuthor']);
+$author = addslashes($_POST['author']);
 $price = $_POST['bookPrice'];
 $genre = $_POST['bookGenre'];
 $date = $_POST['bookDate'];
 $stock = $_POST['bookStock'];
 $image = $_POST['bookImage'];
+$authorID= $_POST['author'];
+
+$getAuthorName ="SELECT * FROM authors WHERE authorID = '$authorID'";
+$resultAuthor = $mysqli -> query($getAuthorName);
+$authorRow = $resultAuthor -> fetch_array();
+$authorName = $authorRow['authorName'];
 
 ?>
 <html>
@@ -31,7 +37,7 @@ if ($description == '' || $name == '' || $author == '' || $price == '' || $genre
 
 <?php 
 }else{
-	$q = "INSERT INTO book(description,bookName,bookAuthor,bookPrice,bookGenre,pubDate,stock,imageLink) VALUES('$description','$name','$author','$price','$genre','$date','$stock','$image');";
+	$q = "INSERT INTO book(description,bookName,bookAuthor,bookPrice,bookGenre,pubDate,stock,imageLink,authorID) VALUES('$description','$name','$authorName','$price','$genre','$date','$stock','$image','$author');";
 
 	$result = $mysqli -> query($q);
 	$bookID = $mysqli -> insert_id;

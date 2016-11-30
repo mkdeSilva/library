@@ -2,12 +2,12 @@
 require_once('connect.php');
 session_start();
 
-$editID = $_POST['publisherID'];
-$name = addslashes($_POST['publisherName']);
-$location = addslashes($_POST['publisherLocation']);
+$editID = $_POST['authorID'];
+$name = addslashes($_POST['authorName']);
+$website = addslashes($_POST['authorWebsite']);
 ?>
 <html>
-<title>Updating Publisher</title>
+<title>Updating Author</title>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="design.css">
 <body>
@@ -15,7 +15,8 @@ $location = addslashes($_POST['publisherLocation']);
 	<br>
 
 	<?php
-	$q = "UPDATE publishers SET name = '$name', location = '$location' WHERE pubID = '$editID'";
+	$q = "UPDATE authors SET authorName = '$name', website = '$website' WHERE authorID = '$editID'";
+	
 
 if ($result = $mysqli->query($q)) // Execute update query
 {
@@ -23,10 +24,10 @@ if ($result = $mysqli->query($q)) // Execute update query
 	?>
 	<br><br><hr><br><br>
 	<center>
-		<h2>Updated Book!</h2>
+		<h2>Updated Author!</h2>
 		<table>
 			<?php
-			$q="SELECT * FROM publishers WHERE pubID = '$editID';";
+			$q="SELECT * FROM authors WHERE authorID = '$editID';";
 			$q = strtolower($q);
 			$result=$mysqli->query($q);
 			if(!$result){
@@ -44,22 +45,22 @@ if ($result = $mysqli->query($q)) // Execute update query
 
 				while($row=$result->fetch_array()){ ?>
 				<tr>
-					<td><?=$row['name']?></td> 
-					<td><?=$row['location']?></td>
+					<td><?=$row['authorName']?></td> 
+					<td><?=$row['website']?></td>
 					<td align="center" valign="middle">
-						<a href="editBook.php?bookID=<?=$row['bookID']?>"><img src="pictures/edit.ico" width="24" height="24"></a>
+						<a href="editAuthor.php?pubID=<?=$row['authorID']?>"><img src="pictures/edit.ico" width="24" height="24"></a>
 					</td>
 					<td align="center" valign="middle">
-						<a href='deleteBook.php?bookID=<?=$row['bookID']?>'> <img src="pictures/delete.ico" width="24" height="24"></a></td>
+						<a href='editAuthor.php?pubID=<?=$row['authorID']?>'> <img src="pictures/delete.ico" width="24" height="24"></a></td>
 					</tr>                               
 					<?php }} ?>
 				</table>
-				<h2><span class=flatLink><a href="publisherMenu.php">Go Back.</a></span></h2>
+				<h2><span class=flatLink><a href="authorMenu.php">Go Back.</a></span></h2>
 			</center>
 			<?php
 
 		}else{
-			echo "<br><br><br><br><br><center><h2>Updating book wasn't successful<h2><span class='flatLink'><a href=publisherMenu.php>Go back</a></span></center>";
+			echo "<br><br><br><br><br><center><h2>Updating author wasn't successful<h2><span class='flatLink'><a href=authorMenu.php>Go back</a></span></center>";
 		}
 
 $mysqli->close(); //Close Connection

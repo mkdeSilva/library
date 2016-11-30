@@ -3,7 +3,7 @@ require_once('connect.php');
 session_start();
 
 $editID = $_GET['pubID'];
-$q = "SELECT * FROM publishers WHERE pubID = '$editID'";
+$q = "SELECT * FROM authors WHERE authorID = '$editID'";
 $result = $mysqli->query($q);// Exec select query
 $editBook = $result -> fetch_array();
 
@@ -20,7 +20,7 @@ $editBook = $result -> fetch_array();
 				<div class="flatSidebar">
 					<ul>
 						<li><a href='bookMenu.php'><h2><span >Books</span> | </h2></a></li>
-						<li><a href='publisherMenu.php'><h2><span class="active">Publishers</span> | </h2></a></li>
+						<li><a href='authorMenu.php'><h2><span class="active">Authors</span> | </h2></a></li>
 						<li><a href='studentMenu.php'><h2><span>View Students</span></h2></a></li>
 					</ul>
 				</div>
@@ -28,24 +28,24 @@ $editBook = $result -> fetch_array();
 
 			<center>
 				<div style="color: white;padding: 30px;">
-					<h2><span id="addBooksButton" class="flatChoiceActive"><a>Edit Publisher</a></span></h2>
+					<h2><span id="addBooksButton" class="flatChoiceActive"><a>Edit Author</a></span></h2>
 					<hr>
 				</div>
 			</center>
 
-			<form id="updatePublisherForm" action="updatePublisher.php" method="POST">
+			<form id="updatePublisherForm" action="updateAuthor.php" method="POST">
 					<!-- ADD BOOK FORM -->
 <!-- ADD BOOK FORM -->
 					<center>
 						<div>
 							<label>name</label><br>
-							<input type="text" name="publisherName" class="flatInput" value="<?=$editBook['name']?>">
+							<input type="text" name="authorName" class="flatInput" value="<?=$editBook['authorName']?>">
 							<br><br>
-							<label>location</label><br>
-							<input type="text" name="publisherLocation" class="flatInput" value="<?=$editBook['location']?>">
+							<label>website</label><br>
+							<input type="text" name="authorWebsite" class="flatInput" value="<?=$editBook['website']?>">
 							<br><br>
-							<input type="hidden" name="publisherID" value ="<?= $editID ?> ">
-							<input type="submit" value="Update Publisher" style="width:100px;" class="flatButton">	
+							<input type="hidden" name="authorID" value ="<?= $editID ?> ">
+							<input type="submit" value="Update Author" style="width:100px;" class="flatButton">	
 						</div>
 					</center>
 				</div>

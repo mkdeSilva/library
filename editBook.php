@@ -20,7 +20,7 @@ $editBook = $result -> fetch_array();
 				<div class="flatSidebar">
 					<ul>
 						<li><a href='bookMenu.php'><h2><span class="active">Books</span> | </h2></a></li>
-						<li><a href='publisherMenu.php'><h2><span>Publishers</span> | </h2></a></li>
+						<li><a href='authorMenu.php'><h2><span>Authors</span> | </h2></a></li>
 						<li><a href='studentMenu.php'><h2><span>View Students</span></h2></a></li>
 					</ul>
 				</div>

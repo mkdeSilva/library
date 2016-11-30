@@ -10,7 +10,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 
 
 <head>
-	<title>Book Menu</title>
+	<title>Author Menu</title>
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="design.css">
 </head>
@@ -30,7 +30,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 				<div class="flatSidebar">
 					<ul>
 						<li><a href='bookMenu.php'><h2><span>Books</span> | </h2></a></li>
-						<li><a href='publisherMenu.php'><h2><span class="active">Publishers</span> | </h2></a></li>
+						<li><a href='AuthorMenu.php'><h2><span class="active">Authors</span> | </h2></a></li>
 						<li><a href='studentMenu.php'><h2><span>View Students</span></h2></a></li>
 					</ul>
 				</div>
@@ -38,24 +38,24 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 
 			<center>
 				<div style="color: white;padding: 30px;">
-					<h2><span id="addPublisherButton" class="flatChoiceActive"><a>Add a Publisher</a></span>|<span id="viewPublisherButton" class="flatChoiceInactive"><a>View Publishers</a></span></h2>
+					<h2><span id="addPublisherButton" class="flatChoiceActive"><a>Add an Author</a></span>|<span id="viewPublisherButton" class="flatChoiceInactive"><a>View Authors</a></span></h2>
 				</div>
 			</center>
-			<form id="addPublisherForm" action="addPublisher.php" method="POST">
+			<form id="addPublisherForm" action="addAuthor.php" method="POST">
 				<div id="allInputs">
 
 					<!-- ADD BOOK FORM -->
 					<center>
 						<div>
 							<label>name</label><br>
-							<input type="text" name="publisherName" class="flatInput">
+							<input type="text" name="authorName" class="flatInput">
 							<br><br>
-							<label>location</label><br>
-							<input type="text" name="publisherLocation" class="flatInput">
+							<label>Website</label><br>
+							<input type="text" name="authorWebsite" class="flatInput">
 							<br><br>
 							<br><br>
 							<br>
-							<input type="submit" value="Add Publisher" style="width:100px;" class="flatButton">	
+							<input type="submit" value="Add Author" style="width:100px;" class="flatButton">	
 						</div>
 					</center>
 				</div>
@@ -78,7 +78,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 				</table>--><center>
 				<table>
 					<?php
-					$q="SELECT * FROM publishers;";
+					$q="SELECT * FROM authors;";
 					$q = strtolower($q);
 					$result=$mysqli->query($q);
 					if(!$result){
@@ -89,7 +89,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 
 						<tr>
 							<th>Name</th>
-							<th>Location</th>
+							<th>Website</th>
 							<th>Edit</th>
 							<th>Delete</th>
 						</tr>
@@ -97,13 +97,13 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 
 						while($row=$result->fetch_array()){ ?>
 						<tr>
-							<td><?=$row['name']?></td> 
-							<td><?=$row['location']?></td>
+							<td><?=$row['authorName']?></td> 
+							<td><?=$row['website']?></td>
 							<td align="center" valign="middle">
-							<a href="editPublisher.php?pubID=<?=$row['pubID']?>"><img src="pictures/edit.ico" width="24" height="24"></a>
+							<a href="editAuthor.php?pubID=<?=$row['authorID']?>"><img src="pictures/edit.ico" width="24" height="24"></a>
 							</td>
 							<td align="center" valign="middle">
-								<a href='deletePublisher.php?pubID=<?=$row['pubID']?>'> <img src="pictures/delete.ico" width="24" height="24"></a>
+								<a href='deleteAuthor.php?pubID=<?=$row['authorID']?>'> <img src="pictures/delete.ico" width="24" height="24"></a>
 							</td>
 						</tr>                               
 						<?php }} ?>

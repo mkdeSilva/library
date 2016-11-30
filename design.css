@@ -312,11 +312,3 @@ table, th, td{
     height: 15px;
     color:white;
 }
-
-.flatDropdown{
-    background: rgba(0,0,0,0);
-    /*border: 1px solid white;*/
-    height: 25px;
-    color:white;
-}
-

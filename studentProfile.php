@@ -54,7 +54,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 			 "<br><br>Overdue pay: " . $studentInfo['overduePay'] . "<br><br>";
 
 		if ($studentInfo['anyRent'] == 1){
-			$checkStudentBooksQuery = "SELECT * FROM bookCopies INNER JOIN rentDetails ON bookCopies.bookCopyID = rentDetails.bookCopyID INNER JOIN book ON book.bookID = bookCopies.bookID WHERE studentID = '$studentID';";
+			$checkStudentBooksQuery = "SELECT * FROM bookCopies INNER JOIN rentDetails ON bookCopies.bookCopyID = rentDetails.bookCopyID INNER JOIN book ON book.bookID = bookCopies.bookID WHERE studentID = '$studentID' AND active=1;";
 			//echo $checkStudentBooksQuery;
 			$result = $mysqli -> query($checkStudentBooksQuery);
 		?>
@@ -83,7 +83,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 				<td><?=$row['dateOfReturn']?></td>
 				<td><?=$row['deposit']?></td>
 				<td><img height=100px src="<?=$row['imageLink']?>"></td>
-				<td><span class="flatLink"><a href="returnBook.php?bookCopyID=<?=$row['bookCopyID']?>">RETURN</a></span></td>
+				<td><span class="flatLink"><a href="returnBook.php?bookCopyID=<?=$row['bookCopyID']?>">Return Book</a></span></td>
 			</tr>                               
 				<?php 
 			}}
