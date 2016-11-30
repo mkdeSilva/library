@@ -83,7 +83,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 				<td><?=$row['dateOfReturn']?></td>
 				<td><?=$row['deposit']?></td>
 				<td><img height=100px src="<?=$row['imageLink']?>"></td>
-				<td><span class="flatLink"><a href="returnBook.php?bookCopyID=<?=$row['bookCopyID']?>">RETURN IMAGE HERE OR WHATEVER</a></span></td>
+				<td><span class="flatLink"><a href="returnBook.php?bookCopyID=<?=$row['bookCopyID']?>">RETURN</a></span></td>
 			</tr>                               
 				<?php 
 			}}

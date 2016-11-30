@@ -31,10 +31,10 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 					<ul>
 						<li><a href='bookMenu.php'><h2><span class="active">Books</span> | </h2></a></li>
 						<li><a href='publisherMenu.php'><h2><span>Publishers</span> | </h2></a></li>
-						<lia><a href='studentMenu.php'><h2><span>View Students</span></h2></a></li>
-						</ul>
-					</div>
-				</center><br><br><br><br>
+						<li><a href='studentMenu.php'><h2><span>View Students</span> | </h2></a></li>
+					</ul>
+				</div>
+			</center><br><br><br>
 
 				<center>
 					<div style="color: white;padding: 30px;">

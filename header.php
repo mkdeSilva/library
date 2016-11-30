@@ -19,7 +19,7 @@
 	}else if (isset($_SESSION['id']) && ($_SESSION['permission'] == 'admin'))
 	{
 ?>
-			<li><a href="bookMenu.php">Staff menu</a></li>
+			<li><a href="bookMenu.php">Staff Home</a></li>
 			<li><a href="">Signed in as Staff</a></li>
 			<li><a href="logout.php">Logout</a></li>
 			
