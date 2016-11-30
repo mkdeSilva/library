@@ -9,6 +9,7 @@ unset($_SESSION['matchPasswordError']);
 $code = $_POST['code'];
 $fName = addslashes($_POST['fName']);
 $lName = addslashes($_POST['lName']);
+$faculty = $_POST['faculty'];
 $gender = $_POST['gender'];
 $email = $_POST['email'];
 $username = $_POST['username'];

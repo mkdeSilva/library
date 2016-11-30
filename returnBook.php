@@ -1,7 +1,7 @@
 <?php
 require_once('connect.php');
 session_start();
-$editID = $_POST['bookID'];
+$bookCopyID = $_GET['bookCopyID'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -14,6 +14,11 @@ $editID = $_POST['bookID'];
 	<header><?php require_once('header.php') ?> </header>
 	<br><br><br><br><br>
 	<br><br>
+	<br>
+
+	<?php 
+	echo "Your book copy ID is: " . $bookCopyID;
+	?>
 
 
 </body>
