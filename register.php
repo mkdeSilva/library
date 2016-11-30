@@ -17,7 +17,7 @@ require_once('connect.php');
 	<header>
 		<?php require_once('header.php') ?>
 	</header>
-        <br><br>
+    <br><br>
     <div class="container">
         <div id="allInputs">
             <center>
@@ -30,7 +30,7 @@ require_once('connect.php');
             <?php
             $jobs = array("Pages", "Assistant", "Librarian", "Manager","Director");
             if (isset($_SESSION['flagError'])){
-                
+
                 if ($_SESSION['flagError']=='password'){
                     echo "<br><span style='color:red'> Passwords do not match </span> <br><br>";
 
@@ -44,41 +44,34 @@ require_once('connect.php');
             }
             ?>
 
-    <div style="width: 100%;">
-        <div style="float:left; width: 60%">
-            
-            <h3> Please fill in the information below: </h3>
-            
-            <form id="studentRegisterForm" action="checkRegistration.php" method="POST">
-               <input type ="hidden" name = "code" value = '0'>
+            <div style="width: 100%;">
 
-               First Name <br> <input type = "text" name = "fName" class="flatTextbox" > <br><br>
-               Last Name <br> <input type = "text" name = "lName" class="flatTextbox" > <br><br>
-               Faculty <br> <input type = "text" name = "faculty" class="flatTextbox" > <br><br> 
-               Gender 
-               <br><input type="radio" name="gender" value="Male" CHECKED> Male
-               <br><input type="radio" name="gender" value="Female"> Female
-               <br><input type="radio" name="gender" value="Other"> Other
-               <br><br>
-               Age <br> <input type = "text" name= "age" class="flatTextbox" > <br><br> 
-               E-Mail <br> <input type = "text" name= "email" class="flatTextbox" > <br><br>
-        </div>
+                    <h3> Please fill in the information below: </h3>
 
+                    <form id="studentRegisterForm" action="checkRegistration.php" method="POST">
+                    <!-- to prevent errors -->
+                    <input type ="hidden" name = "code" value=0>
 
-        <div style="float:right; width: 40%">
-            
-            <h3> Create Your Log-In :</h3>
+                     First Name <br> <input type = "text" name = "fName" class="flatTextbox" > <br><br>
+                     Last Name <br> <input type = "text" name = "lName" class="flatTextbox" > <br><br>
+                     Faculty <br> <input type = "text" name = "faculty" class="flatTextbox" > <br><br> 
+                     Gender 
+                     <br><input type="radio" name="gender" value="Male" CHECKED> Male
+                     <br><input type="radio" name="gender" value="Female"> Female
+                     <br><input type="radio" name="gender" value="Other"> Other
+                     <br><br>
+                     Age <br> <input type = "text" name= "age" class="flatTextbox" > <br><br> 
+                     E-Mail <br> <input type = "text" name= "email" class="flatTextbox" > <br><br>
+                    <h3> Create Your Log-In :</h3><hr><br>
+                    Choose Username <br> <input type = "text" name = "username" class="flatTextbox" > <br><br>
+                    Choose Password <br> <input type = "password" name = "passwd" class="flatTextbox"  ><br><br>
+                    Verify Password <br> <input type = "password" name = "passwdVerify" class="flatTextbox"  ><br><br>
+                    <br><br>
+                                 <input type = "hidden" name = "whichMember" value = "student">
 
-            Choose Username <br> <input type = "text" name = "username" class="flatTextbox" > <br><br>
-            Choose Password <br> <input type = "password" name = "passwd" class="flatTextbox"  ><br><br>
-            Verify Password <br> <input type = "password" name = "passwdVerify" class="flatTextbox"  ><br><br>
-            <input type = "hidden" name = "whichMember" value = "student">
-            <br><br>
-                <input type="submit" value="Sign Up!" class="flatButton">
-                  
-            <br>
-        </div>
-    </div>            
+                    <input type="submit" value="Sign Up!" class="flatButton">
+
+                    <br>
         </form>
 
         <form id="staffRegisterForm" action="checkRegistration.php" method="POST" style="display:none">
@@ -100,7 +93,7 @@ require_once('connect.php');
                 }
                 ?>
             </select>
-<br><br>
+            <br><br>
             Gender 
             <br><input type="radio" name="gender" value="Male" CHECKED> Male
             <br><input type="radio" name="gender" value="Female"> Female
@@ -108,6 +101,18 @@ require_once('connect.php');
             <br><br>
             Age <br> <input type = "text" name = "age" class="flatTextbox" > <br><br> 
             E-Mail <br> <input type = "text" name = "email" class="flatTextbox" > <br><br>
+            <h3> Create Your Log-In :  </h3>
+             <hr><br>
+             Choose Username <br> <input type = "text" name = "username" class="flatTextbox" > <br><br>
+             Choose Password <br> <input type = "password" name = "passwd" class="flatTextbox" ><br><br>
+             Verify Password <br> <input type = "password" name = "passwdVerify" class="flatTextbox"  ><br><br>
+             <input type = "hidden" name = "whichMember" value = "staff">
+             <br><br>
+             <center>
+                 <input type="submit" value="Sign Up!" class="flatButton">
+             </center>           
+            <br>
+              </center>
         </form>
     </center>
 </div>
