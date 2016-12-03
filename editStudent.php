@@ -62,7 +62,7 @@ $editStudent = $result -> fetch_array();
 						<input type="text" name="gender" class="flatInput" value="<?=$editStudent['gender']?>">
 						<br><br>
 						<label>age</label><br>
-						<input type="date" name="age" class="flatInput" value="<?=$editStudent['age']?>"> 
+						<input type="text" name="age" class="flatInput" value="<?=$editStudent['age']?>"> 
 						<br><br>
 						<label>rent</label><br>
 						<input type="text" name="rent" class="flatInput" value="<?=$editStudent['anyRent']?>">

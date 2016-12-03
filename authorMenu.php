@@ -30,7 +30,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 				<div class="flatSidebar">
 					<ul>
 						<li><a href='bookMenu.php'><h2><span>Books</span> | </h2></a></li>
-						<li><a href='AuthorMenu.php'><h2><span class="active">Authors</span> | </h2></a></li>
+						<li><a href='authorMenu.php'><h2><span class="active">Authors</span> | </h2></a></li>
 						<li><a href='studentMenu.php'><h2><span>View Students</span></h2></a></li>
 					</ul>
 				</div>
@@ -103,7 +103,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 							<a href="editAuthor.php?pubID=<?=$row['authorID']?>"><img src="pictures/edit.ico" width="24" height="24"></a>
 							</td>
 							<td align="center" valign="middle">
-								<a href='deleteAuthor.php?pubID=<?=$row['authorID']?>'> <img src="pictures/delete.ico" width="24" height="24"></a>
+								<a href='deletePublisher.php?pubID=<?=$row['authorID']?>'> <img src="pictures/delete.ico" width="24" height="24"></a>
 							</td>
 						</tr>                               
 						<?php }} ?>

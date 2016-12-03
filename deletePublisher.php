@@ -5,13 +5,13 @@
 
 	if (isset($id)) {
 
-		$q="DELETE FROM publishers WHERE pubID=$id";
+		$q="DELETE FROM authors WHERE authorID=$id";
 		echo $q;
 			if(!$mysqli->query($q)){
 				echo "DELETE failed. Error: ".$mysqli->error ;
 		   }
 		   $mysqli->close();
 		   //redirect
-		   header("Location: publisherMenu.php");
+		   header("Location: authorMenu.php");
 	}
 ?>
