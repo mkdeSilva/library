@@ -74,6 +74,36 @@ $editBook = $result -> fetch_array();
 				</div>
 
 </form>
+<center>
+<table style="float: center">
+					<?php
+					$q="SELECT bookCopyID,book.bookID,bookName,available FROM bookcopies,book WHERE bookcopies.bookID=book.bookID and book.bookID='$editID'";
+					$result=$mysqli->query($q);
+					if(!$result){
+						echo "Select failed. Error: ".$mysqli->error ;
+						break;
+					}else{
+						?>
+						<tr>
+							<th>bookCopyID</th>
+							<th>bookID</th>
+							<th>Book Name</th>
+							<th>Available</th>
+							<th>Delete</th>
+						</tr>
+						<?php
+
+						while($row=$result->fetch_array()){ ?>
+						<tr>
+							<td><?=$row['bookCopyID']?></td> 
+							<td><?=$row['bookID']?></td>
+							<td><?=$row['bookName']?></td>
+							<td><?=$row['available']?></td>
+							<td align="center" valign="middle">
+								<a href='deleteBookcopy.php?bookCopyID=<?=$row['bookCopyID']?>'> <img src="pictures/delete.ico" width="24" height="24"></a></td>
+							</tr>                               
+							<?php }} ?>
+						</table></center>
 <?php
 
 ?>	
