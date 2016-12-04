@@ -2,6 +2,7 @@
 	require_once('connect.php');
 
 	$id = $_GET['bookCopyID'];
+	$bookID=$_GET['bookID'];
 
 	if (isset($id)) {
 
@@ -11,6 +12,6 @@
 		   }
 		   $mysqli->close();
 		   //redirect
-		   header("Location: editBook.php");
+		   header("Location: editBook.php?bookID=<?=$bookID?");
 	}
 ?>
