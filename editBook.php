@@ -102,11 +102,13 @@ $editBook = $result -> fetch_array();
 							<td align="center" valign="middle">
 								<a href='deleteBookcopy.php?bookCopyID=<?=$row['bookCopyID']?>'> <img src="pictures/delete.ico" width="24" height="24"></a></td>
 							</tr>                               
-							<?php }} ?>
-						</table></center>
-<?php
+							<?php }?>
+							<tr> <td rowspan="4"><a href="addBookcopy.php?bookID=<?=$editID?>"><img src="pictures/add.ico" width="24" height="24"><font color="white">Add</font></a></td></tr>
+							<?php
+							} ?>
+</table>
+</center>
 
-?>	
 
 </body>
 </html>
