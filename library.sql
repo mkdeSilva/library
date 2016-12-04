@@ -1,14 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
--- https://www.phpmyadmin.net/
+-- version 4.5.1
+-- http://www.phpmyadmin.net
 --
--- Host: localhost:3306
--- Generation Time: Nov 30, 2016 at 03:03 AM
--- Server version: 5.6.33
--- PHP Version: 7.0.12
+-- Host: 127.0.0.1
+-- Generation Time: Dec 04, 2016 at 09:35 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `library`
@@ -64,8 +70,33 @@ INSERT INTO `book` (`bookID`, `description`, `bookName`, `bookAuthor`, `bookPric
 (5, 'Eragon must visit the elves and forge his true sword', 'Brisingr', 'Christopher Paolini', 400, 'Fantasy', '2008-09-02', 4, 'https://upload.wikimedia.org/wikipedia/en/7/70/Brisingr_book_cover.png', 0),
 (6, 'Galbatorix is preparing and Eragon must face him', 'Inheritance', 'Christopher Paolini', 500, 'Fantasy', '2011-11-08', 4, 'https://upload.wikimedia.org/wikipedia/en/2/2b/Inheritance2011.JPG', 0),
 (9, 'Who is the person that opens the chamber of secrets?', 'Harry Potter and the Chamber of Secrets', 'J.K. Rowling', 400, 'Fantasy', '1998-07-02', 6, 'https://upload.wikimedia.org/wikipedia/en/a/a7/Harry_Potter_and_the_Chamber_of_Secrets_(US_cover).jpg', 0),
-(10, 'The story of Sonea, a young girl from the slums, as she discovers her magical potential', 'The Magician\'s Guild', 'Trudi Canavan', 200, 'Fantasy', '2001-09-02', 1, 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e7/TrudiCanavan_TheMagiciansGuild.jpg/220px-TrudiCanavan_TheMagiciansGuild.jpg', 0),
-(13, 'The story follows Harry Potter, a wizard in his fourth year at Hogwarts School of Witchcraft and Wizardry and the mystery surrounding the entry of Harry\'s name into the Triwizard Tournament, in which he is forced to compete.', 'Harry Potter and the Goblet of Fire', 'J.K. Rowling', 500, 'Fantasy', '2008-09-12', 5, 'https://upload.wikimedia.org/wikipedia/en/c/c7/Harry_Potter_and_the_Goblet_of_Fire.jpg', 0);
+(10, 'The story of Sonea, a young girl from the slums, as she discovers her magical potential', 'The Magician''s Guild', 'Trudi Canavan', 200, 'Fantasy', '2001-09-02', 1, 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e7/TrudiCanavan_TheMagiciansGuild.jpg/220px-TrudiCanavan_TheMagiciansGuild.jpg', 0),
+(13, 'The story follows Harry Potter, a wizard in his fourth year at Hogwarts School of Witchcraft and Wizardry and the mystery surrounding the entry of Harry''s name into the Triwizard Tournament, in which he is forced to compete.', 'Harry Potter and the Goblet of Fire', 'J.K. Rowling', 500, 'Fantasy', '2008-09-12', 5, 'https://upload.wikimedia.org/wikipedia/en/c/c7/Harry_Potter_and_the_Goblet_of_Fire.jpg', 0);
+
+--
+-- Triggers `book`
+--
+DELIMITER $$
+CREATE TRIGGER `Add Book` AFTER INSERT ON `book` FOR EACH ROW BEGIN
+declare x int ;
+IF (new.stock>0) THEN
+SET x=1;
+WHILE x<=new.stock DO
+INSERT INTO bookCopies(bookID) VALUES(NEW.bookID);
+SET x=x+1;
+END WHILE;
+END IF;
+END
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `delete book` BEFORE DELETE ON `book` FOR EACH ROW BEGIN
+
+DELETE FROM bookcopies WHERE bookcopies.bookID=old.bookID;
+
+END
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -196,7 +227,7 @@ CREATE TABLE `staff` (
 INSERT INTO `staff` (`staffID`, `fName`, `lName`, `username`, `passwd`, `gender`, `jobID`) VALUES
 (1, 'Rebecca', 'Liverdale', 'rLiverdale', '123', 'female', '2'),
 (2, 'Ben', 'Affleck', 'batman', 'joker', 'Male', '1'),
-(3, 'Ra\'s', 'Al Ghul', 'demon', 'lazarus', 'Male', '2');
+(3, 'Ra''s', 'Al Ghul', 'demon', 'lazarus', 'Male', '2');
 
 -- --------------------------------------------------------
 
@@ -292,12 +323,12 @@ ALTER TABLE `authors`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `bookcopies`
 --
 ALTER TABLE `bookcopies`
-  MODIFY `bookCopyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=277;
+  MODIFY `bookCopyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=280;
 --
 -- AUTO_INCREMENT for table `jobs`
 --
@@ -318,3 +349,6 @@ ALTER TABLE `staff`
 --
 ALTER TABLE `students`
   MODIFY `studentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
