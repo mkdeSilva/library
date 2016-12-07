@@ -6,6 +6,18 @@ $editID = $_GET['bookID'];
 $q = "SELECT * FROM book WHERE bookID = '$editID'";
 $result = $mysqli->query($q);// Exec select query
 $editBook = $result -> fetch_array();
+if (isset($_POST['submit'])) {
+	$stock=$_POST['bookStock'];
+	if ($stock>$editBook['stock']) {
+		for ($i=0; $i < ($stock-$editBook['stock']); $i++) { 
+			$qq="INSERT INTO bookCopies(bookID) VALUES('$editID');";
+			$resultt=$mysqli -> query($qq);
+		}
+	}elseif ($stock<$editBook['stock']) {
+		header("Location: deletecopy.php?bookID=$editID?");
+	}
+	$editBook['stock']=$stock;
+}
 
 ?>
 <html>
@@ -32,8 +44,8 @@ $editBook = $result -> fetch_array();
 					<hr>
 				</div>
 			</center>
-
-			<form id="updateBookForm" action="updateBook.php" method="POST">
+<!--action="updateBook.php"-->
+			<form id="updateBookForm"  method="POST">
 					<!-- ADD BOOK FORM -->
 
 					<div style="float:left">
@@ -69,44 +81,13 @@ $editBook = $result -> fetch_array();
 						<br><br>
 						<br>
 						<input type="hidden" name="bookID" value ="<?= $editID ?> ">
-						<input type="submit" style="width:100px" value="Update Book" class="flatButton">	
+						<input type="submit" name="submit" style="width:100px" value="Update Book" class="flatButton">	
 					</div>
 				</div>
 
 </form>
 <center>
-<table style="float: center">
-					<?php
-					$q="SELECT bookCopyID,book.bookID,bookName,available FROM bookcopies,book WHERE bookcopies.bookID=book.bookID and book.bookID='$editID'";
-					$result=$mysqli->query($q);
-					if(!$result){
-						echo "Select failed. Error: ".$mysqli->error ;
-						break;
-					}else{
-						?>
-						<tr>
-							<th>bookCopyID</th>
-							<th>bookID</th>
-							<th>Book Name</th>
-							<th>Available</th>
-							<th>Delete</th>
-						</tr>
-						<?php
 
-						while($row=$result->fetch_array()){ ?>
-						<tr>
-							<td><?=$row['bookCopyID']?></td> 
-							<td><?=$row['bookID']?></td>
-							<td><?=$row['bookName']?></td>
-							<td><?=$row['available']?></td>
-							<td align="center" valign="middle">
-								<a href='deleteBookcopy.php?bookCopyID=<?=$row['bookCopyID']?>?bookID=<?=$editID?>'> <img src="pictures/delete.ico" width="24" height="24"></a></td>
-							</tr>                               
-							<?php }?>
-							<tr> <td rowspan="4"><a href="addBookcopy.php?bookID=<?=$editID?>"><img src="pictures/add.ico" width="24" height="24"><font color="white">Add</font></a></td></tr>
-							<?php
-							} ?>
-</table>
 </center>
 
 

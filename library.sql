@@ -53,8 +53,7 @@ INSERT INTO `book` (`bookID`, `description`, `bookName`, `bookAuthor`, `bookPric
 (6, 'Galbatorix is preparing and Eragon must face him', 'Inheritance', 'Christopher Paolini', 500, 'Fantasy', '2011-11-08', 4, 'https://upload.wikimedia.org/wikipedia/en/2/2b/Inheritance2011.JPG', 0),
 (9, 'Who is the person that opens the chamber of secrets?', 'Harry Potter and the Chamber of Secrets', 'J.K. Rowling', 400, 'Fantasy', '1998-07-02', 6, 'https://upload.wikimedia.org/wikipedia/en/a/a7/Harry_Potter_and_the_Chamber_of_Secrets_(US_cover).jpg', 0),
 (10, 'The story of Sonea, a young girl from the slums, as she discovers her magical potential', 'The Magician''s Guild', 'Trudi Canavan', 200, 'Fantasy', '2001-09-02', 1, 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e7/TrudiCanavan_TheMagiciansGuild.jpg/220px-TrudiCanavan_TheMagiciansGuild.jpg', 0),
-(13, 'The story follows Harry Potter, a wizard in his fourth year at Hogwarts School of Witchcraft and Wizardry and the mystery surrounding the entry of Harry''s name into the Triwizard Tournament, in which he is forced to compete.', 'Harry Potter and the Goblet of Fire', 'J.K. Rowling', 500, 'Fantasy', '2008-09-12', 5, 'https://upload.wikimedia.org/wikipedia/en/c/c7/Harry_Potter_and_the_Goblet_of_Fire.jpg', 0),
-(16, 'eeee', 'eeee', 'eeeee', 3333, 'qqqq', '2016-10-06', 3, 'wwww', 1);
+(13, 'The story follows Harry Potter, a wizard in his fourth year at Hogwarts School of Witchcraft and Wizardry and the mystery surrounding the entry of Harry''s name into the Triwizard Tournament, in which he is forced to compete.', 'Harry Potter and the Goblet of Fire', 'J.K. Rowling', 500, 'Fantasy', '2008-09-12', 5, 'https://upload.wikimedia.org/wikipedia/en/c/c7/Harry_Potter_and_the_Goblet_of_Fire.jpg', 0);
 
 --
 -- Triggers `book`
@@ -104,57 +103,36 @@ INSERT INTO `bookcopies` (`bookCopyID`, `bookID`, `available`) VALUES
 (153, 2, 0),
 (209, 10, 0),
 (222, 4, 0),
-(247, 1, 1),
-(248, 1, 1),
-(249, 2, 1),
-(250, 2, 1),
-(251, 3, 1),
-(252, 3, 1),
-(253, 4, 1),
-(254, 4, 1),
-(255, 4, 1),
-(256, 4, 1),
-(257, 5, 1),
-(258, 5, 1),
-(259, 5, 1),
-(260, 5, 1),
-(261, 6, 1),
-(262, 6, 1),
-(263, 6, 1),
-(264, 6, 1),
-(265, 9, 1),
-(266, 9, 1),
-(267, 9, 1),
-(268, 9, 1),
-(269, 9, 1),
-(270, 9, 1),
-(271, 10, 1),
-(272, 13, 1),
-(273, 13, 1),
-(274, 13, 1),
-(275, 13, 1),
-(276, 13, 1),
-(280, 16, 1);
-
---
--- Triggers `bookcopies`
---
-DELIMITER $$
-CREATE TRIGGER `add cp` AFTER INSERT ON `bookcopies` FOR EACH ROW BEGIN
-
-UPDATE book SET stock=stock+1;
-
-END
-$$
-DELIMITER ;
-DELIMITER $$
-CREATE TRIGGER `delete cp` BEFORE DELETE ON `bookcopies` FOR EACH ROW BEGIN
-IF old.available = 1 THEN
-UPDATE book SET stock=stock-1;
-END IF;
-END
-$$
-DELIMITER ;
+(504, 2, 1),
+(505, 2, 1),
+(506, 3, 1),
+(507, 3, 1),
+(508, 4, 1),
+(509, 4, 1),
+(510, 4, 1),
+(511, 4, 1),
+(512, 5, 1),
+(513, 5, 1),
+(514, 5, 1),
+(515, 5, 1),
+(516, 6, 1),
+(517, 6, 1),
+(518, 6, 1),
+(519, 6, 1),
+(520, 9, 1),
+(521, 9, 1),
+(522, 9, 1),
+(523, 9, 1),
+(524, 9, 1),
+(525, 9, 1),
+(526, 10, 1),
+(527, 13, 1),
+(528, 13, 1),
+(529, 13, 1),
+(530, 13, 1),
+(531, 13, 1),
+(539, 1, 1),
+(540, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -327,12 +305,12 @@ ALTER TABLE `authors`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- AUTO_INCREMENT for table `bookcopies`
 --
 ALTER TABLE `bookcopies`
-  MODIFY `bookCopyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=289;
+  MODIFY `bookCopyID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=541;
 --
 -- AUTO_INCREMENT for table `jobs`
 --

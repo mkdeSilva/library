@@ -12,6 +12,6 @@
 		   }
 		   $mysqli->close();
 		   //redirect
-		   header("Location: editBook.php?bookID=<?=$bookID?");
+		   header("Location: editBook.php?bookID=<?=$bookID?>");
 	}
 ?>
