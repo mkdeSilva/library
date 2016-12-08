@@ -52,10 +52,10 @@ $editID = $_POST['bookID'];
 
 				   	//INSERT into bookCopy
 				   	//$addNewCopyQuery = "INSERT INTO bookCopies(bookID) VALUES('$editID');";
-					$insertRentDetails = "INSERT INTO rentdetails(dateOfIssue,dateOfReturn, deposit,bookCopyID,studentID,active) VALUES('$currentDate','$returnDate','$deposit','$bookCopyID','$studentID',1);";
+					$insertRentDetails = "INSERT INTO rentdetails(dateOfIssue,dateOfReturn, deposit,bookCopyID,studentID,active) VALUES('$currentDate','$returnDate','$deposit','$bookCopyID','$studentID','pending');";
 					$insertRentResult = $mysqli -> query($insertRentDetails);
 					//echo $insertRentDetails;
-					require_once('updateBookCopies.php');
+					//require_once('updateBookCopies.php');
 					//echo $insertRentDetails;
 					header("Location: studentProfile.php");
 

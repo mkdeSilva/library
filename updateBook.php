@@ -28,7 +28,7 @@ $image = $_POST['bookImage'];
 if ($result = $mysqli->query($q)) // Execute update query
 {
 	//Success
-	require_once('updateBookCopies.php');
+	//require_once('updateBookCopies.php');
 	?>
 	<br><br><hr><br><br>
 	<center>
