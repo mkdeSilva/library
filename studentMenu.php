@@ -37,7 +37,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 
 		<center>
 			<div style="color: white;padding: 30px;">
-				<h2><span id="viewApprovalButton" class="flatChoiceActive"><a>Approve Rent</a></span>|<span id="viewStudentsButton" class="flatChoiceInactive"><a>View Students</a></span></h2>
+				<h2><span id="viewApprovalButton" class="flatChoiceActive"><a>Approve Rent</a></span>|<span id="viewStudentsButton" class="flatChoiceInactive"><a>View Students</a></span>|<span id="viewAllRentDetails" class="flatChoiceInactive"><a>Active Rent Details</a></span></h2>
 			</div>
 		</center>
 
@@ -93,93 +93,172 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 				<?php
 				$pendingQuery = "SELECT * FROM bookCopies INNER JOIN rentDetails ON bookCopies.bookCopyID = rentDetails.bookCopyID INNER JOIN book ON book.bookID = bookCopies.bookID WHERE active=-1;";
 				$pendingResult=$mysqli->query($pendingQuery);
-				if(!$pendingResult){
+				if(!$pendingResult)
+				{
 					echo "Select failed. Error: ".$mysqli->error ;
 					
 				}else{
 					$numberOfRows = $pendingResult -> num_rows;
-					if ($numberOfRows > 0){
-					?>
-					<form id = "approvalForm">
-						<center>
-							<table>
-								<tr>
-									<th>Book Copy ID</th>
-									<th>Book Name</th>
-									<th>Author</th>
-									<th>Image Link</th>
-									<th>Student Name</th>
-									<th>Email</th>
-									<th>Overdue Pay</th>
-									<th>Deposit</th>
-									<th>Approve</th>
-									<th>Cancel</th>
-								</tr>
-								<?php
-
-								while($pendingRow=$pendingResult->fetch_array())
-								{
-									$studentID = $pendingRow['studentID'];
-									$getStudentQuery = "SELECT * FROM students WHERE studentID = '$studentID';";
-									$getStudentResult = $mysqli -> query($getStudentQuery);
-									$studentRow = $getStudentResult -> fetch_array();
-								?>
-
-									<tr>
-							<td><?=$pendingRow['bookCopyID']?></td> 
-							<td><?=$pendingRow['bookName']?></td> 
-							<td><?=$pendingRow['bookAuthor']?></td> 
-							<td><img height=100px src ="<?=$pendingRow['imageLink']?>"></td> 
-							<td><?=$studentRow['fName']?> <?=$studentRow['lName']?></td> 
-							<td><?=$studentRow['email']?></td> 
-							<td><?=$studentRow['overduePay']?></td> 
-							<td><?=$pendingRow['deposit']?></td> 
-								<td><span class="flatLink"><a href="approve.php?rentID=<?=$pendingRow['rentID']?>">Approve</a></span></td>
-								<td><span class="flatLink"><a href="cancel.php?rentID=<?=$pendingRow['rentID']?>&member=staff&studentID=<?=$studentID?>">Cancel</a></span></td>
-
-									</tr>  
-								<?php
-								}
-								}else{
-							echo "<center><h2>There are no rent details to approve</h2></center>";
- 
-						}}
-								?>
-									</table>
-								</center>
-							</form>
-
-							<?php 
-						
-
-						}else{
-							echo "<br><br><br><br><center><h2>You must login to see the contents of our website: <span class='flatLink'><a href = 'login.php'>Login</a></span></h2></center>";
-						}
+					if ($numberOfRows > 0)
+					{
 						?>
+						<form id = "approvalForm">
+							<center>
+								<table>
+									<tr>
+										<th>Book Copy ID</th>
+										<th>Book Name</th>
+										<th>Author</th>
+										<th>Image Link</th>
+										<th>Student Name</th>
+										<th>Email</th>
+										<th>Overdue Pay</th>
+										<th>Deposit</th>
+										<th>Approve</th>
+										<th>Cancel</th>
+									</tr>
+									<?php
+
+									while($pendingRow=$pendingResult->fetch_array())
+									{
+										$studentID = $pendingRow['studentID'];
+										$getStudentQuery = "SELECT * FROM students WHERE studentID = '$studentID';";
+										$getStudentResult = $mysqli -> query($getStudentQuery);
+										$studentRow = $getStudentResult -> fetch_array();
+										?>
+
+										<tr>
+											<td><?=$pendingRow['bookCopyID']?></td> 
+											<td><?=$pendingRow['bookName']?></td> 
+											<td><?=$pendingRow['bookAuthor']?></td> 
+											<td><img height=100px src ="<?=$pendingRow['imageLink']?>"></td> 
+											<td><?=$studentRow['fName']?> <?=$studentRow['lName']?></td> 
+											<td><?=$studentRow['email']?></td> 
+											<td><?=$studentRow['overduePay']?></td> 
+											<td><?=$pendingRow['deposit']?></td> 
+											<td><span class="flatLink"><a href="approve.php?rentID=<?=$pendingRow['rentID']?>">Approve</a></span></td>
+											<td><span class="flatLink"><a href="cancel.php?rentID=<?=$pendingRow['rentID']?>&member=staff&studentID=<?=$studentID?>">Cancel</a></span></td>
+
+										</tr>  
+										<?php
+									}
+								}else{
+									echo "<center><h2>There are no rent details to approve</h2></center>";
+
+								}
+							}
+							?>
+						</table>
+					</center>
+				</form>
 
 
-						<script src = 'jQuery.js'></script>
-						<script>
-							$(function(){
-								$("#viewStudentsButton").click(function(){
-									$("#approvalForm").hide();
-									$("#studentForm").show();
-									$(this).addClass('flatChoiceActive').removeClass('flatChoiceInactive');
-									$("#viewApprovalButton").addClass('flatChoiceInactive').removeClass('flatChoiceActive');
-								});
-							});
+				<?php
+				$pendingQuery = "SELECT * FROM bookCopies INNER JOIN rentDetails ON bookCopies.bookCopyID = rentDetails.bookCopyID INNER JOIN book ON book.bookID = bookCopies.bookID WHERE active=1;";
+				$pendingResult=$mysqli->query($pendingQuery);
+				if(!$pendingResult)
+				{
+					echo "Select failed. Error: ".$mysqli->error ;
+					
+				}else{
+					$numberOfRows = $pendingResult -> num_rows;
+					if ($numberOfRows > 0)
+					{
+						?>
+						<form id = "activeForm" style="display:none">
+							<center>
+								<table>
+									<tr>
+										<th>Book Copy ID</th>
+										<th>Book Name</th>
+										<th>Author</th>
+										<th>Image Link</th>
+										<th>Student Name</th>
+										<th>Email</th>
+										<th>Overdue Pay</th>
+										<th>Deposit</th>
+										<th>Approve</th>
+									</tr>
+									<?php
 
-							$(function(){
-								$("#viewApprovalButton").click(function(){
-									$("#studentForm").hide();
-									$("#approvalForm").show();
-									$(this).addClass('flatChoiceActive').removeClass('flatChoiceInactive');
-									$("#viewStudentsButton").addClass('flatChoiceInactive').removeClass('flatChoiceActive');
-								});
-							});
-						</script>
+									while($pendingRow=$pendingResult->fetch_array())
+									{
+										$studentID = $pendingRow['studentID'];
+										$getStudentQuery = "SELECT * FROM students WHERE studentID = '$studentID';";
+										$getStudentResult = $mysqli -> query($getStudentQuery);
+										$studentRow = $getStudentResult -> fetch_array();
+										?>
 
-					</body>
+										<tr>
+											<td><?=$pendingRow['bookCopyID']?></td> 
+											<td><?=$pendingRow['bookName']?></td> 
+											<td><?=$pendingRow['bookAuthor']?></td> 
+											<td><img height=100px src ="<?=$pendingRow['imageLink']?>"></td> 
+											<td><?=$studentRow['fName']?> <?=$studentRow['lName']?></td> 
+											<td><?=$studentRow['email']?></td> 
+											<td><?=$studentRow['overduePay']?></td> 
+											<td><?=$pendingRow['deposit']?></td> 
+											<td><span class="flatLink"><a href="cancel.php?rentID=<?=$pendingRow['rentID']?>&member=staff&studentID=<?=$studentID?>">Cancel</a></span></td>
 
-					</html
+										</tr>  
+										<?php
+									}
+								}else{
+									echo "<center><h2>There are no rent details to approve</h2></center>";
+
+								}
+							}
+							?>
+						</table>
+					</center>
+				</form>
+
+
+				<?php
+			}else{
+				echo "<br><br><br><br><center><h2>You must login to see the contents of our website: <span class='flatLink'><a href = 'login.php'>Login</a></span></h2></center>";
+			}
+			?>
+
+
+
+			<script src = 'jQuery.js'></script>
+			<script>
+				$(function(){
+					$("#viewStudentsButton").click(function(){
+						$("#approvalForm").hide();
+						$("#studentForm").show();
+						$(this).addClass('flatChoiceActive').removeClass('flatChoiceInactive');
+						$("#viewApprovalButton").addClass('flatChoiceInactive').removeClass('flatChoiceActive');
+						$("#activeForm").hide();
+						$("#viewAllRentDetails").addClass('flatChoiceInactive').removeClass('flatChoiceActive');
+					});
+				});
+
+				$(function(){
+					$("#viewApprovalButton").click(function(){
+						$("#studentForm").hide();
+						$("#approvalForm").show();
+						$(this).addClass('flatChoiceActive').removeClass('flatChoiceInactive');
+						$("#viewStudentsButton").addClass('flatChoiceInactive').removeClass('flatChoiceActive');
+						$("#activeForm").hide();
+						$("#viewAllRentDetails").addClass('flatChoiceInactive').removeClass('flatChoiceActive');
+					});
+				});
+
+				$(function(){
+					$("#viewAllRentDetails").click(function(){
+						$("#studentForm").hide();
+						$("#approvalForm").hide();
+						$("#activeForm").show();
+						$(this).addClass('flatChoiceActive').removeClass('flatChoiceInactive');
+						$("#viewStudentsButton").addClass('flatChoiceInactive').removeClass('flatChoiceActive');
+						$("#viewApprovalButton").addClass('flatChoiceInactive').removeClass('flatChoiceActive');
+					})
+				})
+			</script>
+
+		</body>
+
+		</html
 
