@@ -23,7 +23,7 @@ if ($result)
 		$_SESSION['fName'] = $row['fName']; //stores data in session
 		$_SESSION['lName'] = $row['lName']; //stores data in session
 		$_SESSION['permission'] = 'student';
-		header("Location: studentHome.php");
+		header("Location: catalog.php");
 		
 		
 		

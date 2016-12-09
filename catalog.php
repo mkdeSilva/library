@@ -22,6 +22,27 @@ require_once('connect.php');
 	
 	<br><br><br>
 	
+	<?php 
+
+	if($_SESSION['permission'] == 'student')
+	{
+		?> 
+		<center>
+	<div class="flatSidebar">
+		<ul>
+			<li><a href="catalog.php"><h2><span class="active"> Welcome <?php echo $_SESSION['fName'];?> | </span></h2></a></li>
+			<li><a href='studentProfile.php'><h2><span> Profile </span> | </h2></a></li>
+			<li><a href='studentHistory.php'><h2><span> History </span></h2></a></li>
+		</ul>
+	</div>
+
+</center>
+<br>
+<br><br>
+
+<?php	}
+
+	?>
 	<center>
 		<br>
 		<form action="search.php" method="POST">
@@ -37,9 +58,9 @@ require_once('connect.php');
 				<input type="text" name="searchQuery" class="flatSearch" placeholder="search the library">
 				<input type="submit" value="search" class="flatSearchButton">
 			</div>
-		</form>
+		</form><br>
+		</center>
 		<br><br>
-	</center>
 	
 	<h2>Here are some books to read: </h2>
 	<hr><br>
@@ -73,7 +94,7 @@ require_once('connect.php');
 				}
 				?>
 				<br><br>
-				
+
 	<!--<center>
 		//Making the images appear on the top followed by their descriptions underneath
 		<div class="row">
