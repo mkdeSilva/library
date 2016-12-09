@@ -69,7 +69,7 @@ if ($fName == '' || $lName == '' ||  $gender == '' || $email =='' || $username =
 	}elseif ($member=='staff' && $code=='bananas')
 	{
 		$usernameError = 0;
-		$usernamesQuery = "SELECT username FROM students";
+		$usernamesQuery = "SELECT username FROM staff";
 		$usernamesResult = $mysqli -> query($usernamesQuery);
 		while($row = $usernamesResult->fetch_assoc())
 		{
