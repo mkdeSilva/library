@@ -41,7 +41,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 <!---------------------------------------------------------------------------------------------------------------->
 <br>
 <div style="width: 100%;">
-    <div style="float:left; width: 50%">
+    <div style="float:left; width: 33%">
     <div class="container">   
         <div>
         <center>
@@ -54,7 +54,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
     </div>
     </div>
     
-    <div style="float:right; width: 50%">   
+    <div style="float:left; width: 33%">   
         <div>
         <center>
             <br> <img src="pictures/pavel.jpg" style="vertical-align:middle; width: 29%; height:auto"/>
@@ -63,7 +63,17 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
             <br><span style="">Lead Programmer (PHP) </span>
         </center>
         </div>
-    </div>    
+    </div>  
+
+    <div style="float:left; width: 33%">   
+        <div>
+        <center>
+            <br> <img src="pictures/ned.jpg" style="vertical-align:middle; width: 29%; height:auto"/>
+            <br><br><span style=""><b>Anoosid Kiatkamolvong</b></span>
+            <br><span style="">Intern (cuz we pity him) </span>
+        </center>
+        </div>
+    </div>  
 </div>
 
 <!---------------------------------------------------------------------------------------------------------------->
