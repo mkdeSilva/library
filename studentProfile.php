@@ -53,7 +53,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 					"<br><br>Gender: " . $studentInfo['gender'] . 
 					"<br><br>Age: " . $studentInfo['age'] . 
 					"<br><br>Overdue pay: " . $studentInfo['overduePay'] . "<br><br>" . 
-					"<span class='flatLink'><a href='editStudent.php?editID=$studentID'>Edit Info</a></span>";
+					"<span style='border: 1px solid white;' class='flatLink'><a href='editStudent.php?editID=$studentID'>Edit Info</a></span>";
 
 					if ($studentInfo['anyRent'] == 1){
 						$checkStudentBooksQuery = "SELECT * FROM bookCopies INNER JOIN rentDetails ON bookCopies.bookCopyID = rentDetails.bookCopyID INNER JOIN book ON book.bookID = bookCopies.bookID WHERE studentID = '$studentID' AND active=1;";
