@@ -42,6 +42,22 @@ if ($fName == '' || $lName == '' ||  $gender == '' || $email =='' || $username =
 	//echo "Congrats the passwords are the same";
 
 	if ($member=='student' && $error!=1){
+
+		$usernamesQuery = "SELECT username FROM students";
+		$usernamesResult = $mysqli -> query($usernameQuery);
+		while($row = $usernamesResult->fetch_assoc())
+		{
+			if($username == $row['username'])
+			{
+				echo "hi";
+				$_SESSION['flagError'] = 1;
+				$_SESSION['errorMessage'] = 'Username is already in use';
+				$error = 1;
+				//header("Location:register.php");
+			}
+
+		}	
+
 		$q = "INSERT INTO students(fName,lName,faculty,email,username,passwd,gender,age) VALUES ('$fName', '$lName', '$faculty', '$email', '$username', '$passwd','$gender','$age')";
 		$result = $mysqli -> query($q);
 		if($result){
