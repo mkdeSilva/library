@@ -40,64 +40,113 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 
 		</center><br><br><br><br><br><br>
 
-<div style="width: 100%;">
-	<div>
-	<center>
-		<?php 
-		echo   
-			 "Full Name: " . $studentInfo['fName'] . " " . $studentInfo['lName'] .
-			 "<br><br>Faculty: " . $studentInfo['faculty'] . 
-			 "<br><br>Email: " . $studentInfo['email'] . 
-			 "<br><br>Username: " . $studentInfo['username'] . 
-			 "<br><br>Gender: " . $studentInfo['gender'] . 
-			 "<br><br>Age: " . $studentInfo['age'] . 
-			 "<br><br>Overdue pay: " . $studentInfo['overduePay'] . "<br><br>";
+		<div style="width: 100%;">
+			<div>
+				<center>
+					<?php 
+					echo   
+					"Full Name: " . $studentInfo['fName'] . " " . $studentInfo['lName'] .
+					"<br><br>Faculty: " . $studentInfo['faculty'] . 
+					"<br><br>Email: " . $studentInfo['email'] . 
+					"<br><br>Username: " . $studentInfo['username'] . 
+					"<br><br>Gender: " . $studentInfo['gender'] . 
+					"<br><br>Age: " . $studentInfo['age'] . 
+					"<br><br>Overdue pay: " . $studentInfo['overduePay'] . "<br><br>";
 
-		if ($studentInfo['anyRent'] == 1){
-			$checkStudentBooksQuery = "SELECT * FROM bookCopies INNER JOIN rentDetails ON bookCopies.bookCopyID = rentDetails.bookCopyID INNER JOIN book ON book.bookID = bookCopies.bookID WHERE studentID = '$studentID' AND active=1;";
+					if ($studentInfo['anyRent'] == 1){
+						$checkStudentBooksQuery = "SELECT * FROM bookCopies INNER JOIN rentDetails ON bookCopies.bookCopyID = rentDetails.bookCopyID INNER JOIN book ON book.bookID = bookCopies.bookID WHERE studentID = '$studentID' AND active=1;";
 			//echo $checkStudentBooksQuery;
-			$result = $mysqli -> query($checkStudentBooksQuery);
-		?>
-	</center>
-	</div>
-<br>
-	<div>
-	<center>
-			<table>
-			<tr>
 
-			<th>Name</th>
-			<th>Author</th>
-			<th>Issue Date</th>
-			<th>Return Date</th>
-			<th>Deposit</th>
-			<th>Image</th>
-			<th>Return</th>
-			</tr>
+						$result = $mysqli -> query($checkStudentBooksQuery);
 
-			<?php while($row=$result->fetch_array()) { ?>
-			<tr>
-				<td><?=$row['bookName']?></td> 
-				<td><?=$row['bookAuthor']?></td>
-				<td><?=$row['dateOfIssue']?></td>
-				<td><?=$row['dateOfReturn']?></td>
-				<td><?=$row['deposit']?></td>
-				<td><img height=100px src="<?=$row['imageLink']?>"></td>
-				<td><span class="flatLink"><a href="returnBook.php?bookCopyID=<?=$row['bookCopyID']?>">Return Book</a></span></td>
-			</tr>                               
-				<?php 
-			}}
-			
-				 ?>
-			</table>
-	</center>
-	</div>
-</div>
-			<?php
-		}else{
-			echo "<br><br><br><br><center><h2>You must login to see the contents of our website: <span class='flatLink'><a href = 'login.php'>Login</a></span></h2></center>";
-		}
-		?>
+						$checkNumberOfRows = "SELECT COUNT(*) as amount FROM bookCopies INNER JOIN rentDetails ON bookCopies.bookCopyID = rentDetails.bookCopyID INNER JOIN book ON book.bookID = bookCopies.bookID WHERE studentID = '$studentID' AND active=1;";
+						$numberOfRowsResult = $mysqli -> query($checkNumberOfRows);
+						$numberOfActiveRows = $numberOfRowsResult -> fetch_array();
+						$numberOfActive = $numberOfActiveRows['amount'];
+
+						if ($numberOfActive > 0)
+						{
+						?>
+					</center>
+				</div>
+				<br>
+				<div>
+					<center>
+
+						<h2>Books you currently have:</h2> 
+						<hr><br>
+						<table>
+							<tr>
+
+								<th>Name</th>
+								<th>Author</th>
+								<th>Issue Date</th>
+								<th>Return Date</th>
+								<th>Deposit</th>
+								<th>Image</th>
+								<th>Return</th>
+							</tr>
+
+							<?php while($row=$result->fetch_array()) { ?>
+							<tr>
+								<td><?=$row['bookName']?></td> 
+								<td><?=$row['bookAuthor']?></td>
+								<td><?=$row['dateOfIssue']?></td>
+								<td><?=$row['dateOfReturn']?></td>
+								<td><?=$row['deposit']?></td>
+								<td><img height=100px src="<?=$row['imageLink']?>"></td>
+								<td><span class="flatLink"><a href="returnBook.php?bookCopyID=<?=$row['bookCopyID']?>">Return Book</a></span></td>
+							</tr>                               
+							<?php 
+						}}}
+						?>
+					</table>
+					<?php
+
+					$checkPending = "SELECT * FROM bookCopies INNER JOIN rentDetails ON bookCopies.bookCopyID = rentDetails.bookCopyID INNER JOIN book on book.bookID = bookCopies.bookID WHERE studentID = '$studentID' AND ACTIVE = -1;";
+					$pendingResult = $mysqli -> query($checkPending);
+					$numberOfRows = $pendingResult -> num_rows;
+					if ($numberOfRows > 0)
+					{
+					?>
+
+						<h2>Books pending approval:</h2> 
+						<hr><br>
+						<table>
+							<tr>
+
+								<th>Name</th>
+								<th>Author</th>
+								<th>Issue Date</th>
+								<th>Return Date</th>
+								<th>Deposit</th>
+								<th>Image</th>
+								<th>Cancel</th>
+							</tr>
+
+							<?php while($row=$pendingResult->fetch_array()) { ?>
+							<tr>
+								<td><?=$row['bookName']?></td> 
+								<td><?=$row['bookAuthor']?></td>
+								<td><?=$row['dateOfIssue']?></td>
+								<td>-- NA --</td>
+								<td><?=$row['deposit']?></td>
+								<td><img height=100px src="<?=$row['imageLink']?>"></td>
+								<td><span class="flatLink"><a href="cancel.php?rentID=<?=$row['rentID']?>&member=student&studentID=<?=$studentID?>">Cancel</a></span></td>
+							</tr>                               
+							<?php 
+						}}
+						?>
+					</table>
+
+				</center>
+			</div>
+		</div>
+		<?php
+	}else{
+		echo "<br><br><br><br><center><h2>You must login to see the contents of our website: <span class='flatLink'><a href = 'login.php'>Login</a></span></h2></center>";
+	}
+	?>
 
 </body>
 

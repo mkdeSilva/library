@@ -1,17 +1,16 @@
 <?php
-	require_once('connect.php');
+require_once('connect.php');
 
-	$id = $_GET['bookCopyID'];
-	$bookID=$_GET['bookID'];
+$bookCopyID = $_GET['bookCopyID'];
+$bookID=$_GET['bookID'];
 
-	if (isset($id)) {
+if (isset($bookCopyID)) {
 
-		$q="DELETE FROM bookcopies where bookCopyID=$id";
-			if(!$mysqli->query($q)){
-				echo "DELETE failed. Error: ".$mysqli->error ;
-		   }
-		   $mysqli->close();
+	$q="DELETE FROM bookcopies WHERE bookCopyID=$bookCopyID";
+	$deleteResult = $mysqli -> query($q);
+		require_once("updateStock.php");
 		   //redirect
-		   header("Location: editBook.php?bookID=<?=$bookID?>");
-	}
+		//echo "Location: editBook.php?bookID=$bookID";
+		header("Location: editBook.php?bookID=$bookID");
+}
 ?>

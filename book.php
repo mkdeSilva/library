@@ -1,6 +1,7 @@
 <?php 
 require_once('connect.php');
 session_start();
+require_once('updateStock.php');
 $editID = $_GET['bookID'];
 $q = "SELECT * FROM book WHERE bookID = '$editID'";
 $result = $mysqli->query($q);// Exec select query

@@ -16,7 +16,7 @@ $overdue = $_POST['overdue'];
 
 ?>
 <html>
-<title>Updating Student</title>s
+<title>Updating Student</title>
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
 <link rel="stylesheet" type="text/css" href="design.css">
 <body>
@@ -40,7 +40,6 @@ if ($result = $mysqli->query($q)) // Execute update query
 			$result=$mysqli->query($q);
 			if(!$result){
 				echo "Select failed. Error: ".$mysqli->error ;
-				break;
 			}else{
 				?>
 				<tr>
@@ -77,7 +76,7 @@ if ($result = $mysqli->query($q)) // Execute update query
 					</tr>                               
 					<?php }} ?>
 				</table>
-				<h2><span class=flatLink><a href="bookMenu.php">Go Back.</a></span></h2>
+				<h2><span class=flatLink><a href="studentMenu.php">Go Back.</a></span></h2>
 			</center>
 			<?php
 

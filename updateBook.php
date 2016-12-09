@@ -40,7 +40,6 @@ if ($result = $mysqli->query($q)) // Execute update query
 			$result=$mysqli->query($q);
 			if(!$result){
 				echo "Select failed. Error: ".$mysqli->error ;
-				break;
 			}else{
 				?>
 				<tr>

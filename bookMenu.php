@@ -31,7 +31,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 					<ul>
 						<li><a href='bookMenu.php'><h2><span class="active">Books</span> | </h2></a></li>
 						<li><a href='authorMenu.php'><h2><span>Authors</span> | </h2></a></li>
-						<li><a href='studentMenu.php'><h2><span>View Students</span> </h2></a></li>
+						<li><a href='studentMenu.php'><h2><span>Students</span> </h2></a></li>
 					</ul>
 				</div>
 			</center><br><br><br>
