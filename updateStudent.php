@@ -76,7 +76,17 @@ if ($result = $mysqli->query($q)) // Execute update query
 					</tr>                               
 					<?php }} ?>
 				</table>
-				<h2><span class=flatLink><a href="studentMenu.php">Go Back.</a></span></h2>
+				<?php
+				if ($_SESSION['permission'] == 'admin'){
+					?>
+					<h2><span class=flatLink><a href="studentMenu.php">Go Back.</a></span></h2>
+<?php 
+				}else{
+					?> 
+					<h2><span class=flatLink><a href="studentProfile.php">Go Back.</a></span></h2>
+<?php
+				}
+				?>
 			</center>
 			<?php
 
