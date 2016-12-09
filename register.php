@@ -30,17 +30,8 @@ require_once('connect.php');
             <?php
             $jobs = array("Pages", "Assistant", "Librarian", "Manager","Director");
             if (isset($_SESSION['flagError'])){
-
-                if ($_SESSION['flagError']=='password'){
-                    echo "<br><span style='color:red'> Passwords do not match </span> <br><br>";
-
-                }elseif ($_SESSION['flagError']=='empty'){
-                    echo "<br><span style='color:red'> Please fill in all the boxes</span> <br><br>";
-
-                }elseif ($_SESSION['flagError'] == 'emptyPassword'){
-                    echo "<br><span style='color:red'> You must have a password</span> <br><br>";
-
-                }
+                $errorMessage = $_SESSION['errorMessage'];
+            echo "<br><span style='color:red'> $errorMessage</span> <br><br>";
             }
             ?>
             <form id="studentRegisterForm" action="checkRegistration.php" method="POST">

@@ -1,7 +1,6 @@
 <?php
 
 $member = $_POST['whichMember'];
-echo $member;
 require_once('connect.php');
 session_start();
 unset($_SESSION['matchPasswordError']);
@@ -16,11 +15,27 @@ $username = $_POST['username'];
 $age = $_POST['age'];
 $passwd = $_POST['passwd'];
 $checkPass = $_POST['passwdVerify'];
+$error = 0;
+function valid_email($email) {
+    return !!filter_var($email, FILTER_VALIDATE_EMAIL);
+}
+
+if (valid_email($email)){
+	$error = 0;
+}else{
+	$_SESSION['errorMessage'] = 'Email is not in the correct format';
+	$_SESSION['flagErorr'] = 1;
+	$error = 1;
+	header("Location: register.php");
+}
 
 if ($fName == '' || $lName == '' ||  $gender == '' || $email =='' || $username == '' || $age == '' || $passwd == '' || $checkPass == ''){
 	$error = 1;
+	$_SESSION['flagError'] = 1 ;
+	$_SESSION['errorMessage'] = 'Please fill in all boxes';
+	echo $_SESSION['flagError'];
 	header("Location: register.php");
-	$_SESSION['flagError'] = 'empty';
+
 
 }elseif ($passwd == $checkPass && $passwd != ''){
 	
@@ -38,7 +53,7 @@ if ($fName == '' || $lName == '' ||  $gender == '' || $email =='' || $username =
 
 	}elseif ($member=='staff' && $code=='bananas'){
 		$job= $_POST['job'];
-	
+
 		$q = "INSERT INTO staff(fName,lName,username,passwd,gender,jobID) VALUES('$fName', '$lName','$username','$passwd','$gender','$job')";
 		$result = $mysqli -> query($q);
 		if($result){
@@ -53,10 +68,12 @@ if ($fName == '' || $lName == '' ||  $gender == '' || $email =='' || $username =
 
 
 }elseif( $passwd!=$checkPass ){
+	$_SESSION['errorMessage'] = 'Passwords do not match';
+	$_SESSION['flagError'] = 1;
 	header("Location: register.php");
-	$_SESSION['flagError'] = 'password';
+
 }
-	
+
 
 
 
