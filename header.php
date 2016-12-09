@@ -10,7 +10,7 @@
 	{
 ?>
 			<li><a href="studentHome.php"> Student Home </a><li>			
-			<li><a href="#">Signed in as student</a></li>
+			<li><a href="#">Signed in as <?php echo $_SESSION['fName'];?> </a></li>
 			<li><a href="logout.php">Logout</a><li>
 		</ul>
 	</div>
@@ -20,7 +20,7 @@
 	{
 ?>
 			<li><a href="bookMenu.php">Staff Home</a></li>
-			<li><a href="">Signed in as Staff</a></li>
+			<li><a href="">Signed in as <?php echo $_SESSION['fName'];?></a></li>
 			<li><a href="logout.php">Logout</a></li>
 			
 		</ul>

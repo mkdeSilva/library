@@ -75,7 +75,6 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 				<div>
 					<center>
 		<div style="float:right; width: 75%">
-
 						<h2>Books you currently have:</h2> 
 						<table>
 							<tr>
