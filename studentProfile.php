@@ -40,7 +40,8 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 
 		</center><br><br><br><br><br><br>
 
-		<div style="width: 100%;">
+	<div style="width: 100%;">
+		<div style="float:left; width: 25%">
 			<div>
 				<center>
 					<?php 
@@ -69,12 +70,12 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 						?>
 					</center>
 				</div>
-				<br>
+		</div>		
+				
 				<div>
 					<center>
-
+		<div style="float:right; width: 75%">
 						<h2>Books you currently have:</h2> 
-						<hr><br>
 						<table>
 							<tr>
 
@@ -109,9 +110,9 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 					if ($numberOfRows > 0)
 					{
 					?>
-
+						<br>
+						<hr>	
 						<h2>Books pending approval:</h2> 
-						<hr><br>
 						<table>
 							<tr>
 
@@ -138,7 +139,9 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 						}}
 						?>
 					</table>
-
+		</div>
+				</div>
+	</div>
 				</center>
 			</div>
 		</div>

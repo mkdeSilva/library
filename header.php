@@ -14,6 +14,7 @@ session_start();
 	{
 ?>
 			<li><a href="studentHome.php"> Student Home </a><li>			
+<li><a href="#">Signed in as <?php echo $_SESSION['fName'];?> </a></li>
 			<li><a href="logout.php">Logout</a><li>
 		</ul>
 	</div>
@@ -23,6 +24,8 @@ session_start();
 	{
 ?>
 			<li><a href="bookMenu.php">Staff Home</a></li>
+
+			<li><a href="">Signed in as <?php echo $_SESSION['fName'];?></a></li>
 			<li><a href="logout.php">Logout</a></li>
 			
 		</ul>
