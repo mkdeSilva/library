@@ -1,8 +1,3 @@
-<?php
-
-session_start();
-?>
-
 <div id="nav">
 	<div id="navWrapper">
 		<ul>
