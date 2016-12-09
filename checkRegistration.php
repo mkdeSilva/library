@@ -66,7 +66,23 @@ if ($fName == '' || $lName == '' ||  $gender == '' || $email =='' || $username =
 				echo "Sign Up wasn't successful";
 			}
 		}
-	}elseif ($member=='staff' && $code=='bananas'){
+	}elseif ($member=='staff' && $code=='bananas')
+	{
+		$usernameError = 0;
+		$usernamesQuery = "SELECT username FROM students";
+		$usernamesResult = $mysqli -> query($usernamesQuery);
+		while($row = $usernamesResult->fetch_assoc())
+		{
+			if($username == $row['username'])
+			{
+				$_SESSION['flagError'] = 1;
+				$_SESSION['errorMessage'] = 'Username is already in use';
+				$usernameError = 1;
+				header("Location:register.php");
+			}
+
+		}	
+		if ($usernameError == 0){
 		$job= $_POST['job'];
 
 		$q = "INSERT INTO staff(fName,lName,username,passwd,gender,jobID) VALUES('$fName', '$lName','$username','$passwd','$gender','$job')";
@@ -78,6 +94,7 @@ if ($fName == '' || $lName == '' ||  $gender == '' || $email =='' || $username =
 			echo $q;
 			echo "Sign Up wasn't successful";
 		}
+	}
 	}
 	//add to check if  email is in correct format too
 
