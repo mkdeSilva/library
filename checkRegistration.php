@@ -17,7 +17,7 @@ $passwd = $_POST['passwd'];
 $checkPass = $_POST['passwdVerify'];
 $error = 0;
 function valid_email($email) {
-    return !!filter_var($email, FILTER_VALIDATE_EMAIL);
+	return !!filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 
 if (valid_email($email)){
@@ -42,7 +42,7 @@ if ($fName == '' || $lName == '' ||  $gender == '' || $email =='' || $username =
 	//echo "Congrats the passwords are the same";
 
 	if ($member=='student' && $error!=1){
-
+		$usernameError = 0;
 		$usernamesQuery = "SELECT username FROM students";
 		$usernamesResult = $mysqli -> query($usernamesQuery);
 		while($row = $usernamesResult->fetch_assoc())
@@ -52,21 +52,21 @@ if ($fName == '' || $lName == '' ||  $gender == '' || $email =='' || $username =
 				echo "hi";
 				$_SESSION['flagError'] = 1;
 				$_SESSION['errorMessage'] = 'Username is already in use';
-				$error = 1;
+				$usernameError = 1;
 				//header("Location:register.php");
 			}
 
 		}	
+		if ($usernameError == 0){
+			$q = "INSERT INTO students(fName,lName,faculty,email,username,passwd,gender,age) VALUES ('$fName', '$lName', '$faculty', '$email', '$username', '$passwd','$gender','$age')";
+			$result = $mysqli -> query($q);
+			if($result){
+				header("Location: successful.php");
+			}else{
 
-		$q = "INSERT INTO students(fName,lName,faculty,email,username,passwd,gender,age) VALUES ('$fName', '$lName', '$faculty', '$email', '$username', '$passwd','$gender','$age')";
-		$result = $mysqli -> query($q);
-		if($result){
-			header("Location: successful.php");
-		}else{
-
-			echo "Sign Up wasn't successful";
+				echo "Sign Up wasn't successful";
+			}
 		}
-
 	}elseif ($member=='staff' && $code=='bananas'){
 		$job= $_POST['job'];
 
