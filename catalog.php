@@ -1,6 +1,6 @@
 <?php
-    session_start();
-    require_once('connect.php');
+session_start();
+require_once('connect.php');
 ?>
 
 <!DOCTYPE html>
@@ -8,8 +8,8 @@
 
 <head>
 	<title>Catalog</title>
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="design.css">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="design.css">
 
 
 </head>
@@ -26,7 +26,13 @@
 		<br>
 		<form action="search.php" method="POST">
 			<div class="x">
-				Search bar here
+				<br><br>
+				
+				<input type="submit" value="Browse All" class="flatSearchButton">
+			</div>
+		</form>
+		<form action="search.php" method="POST">
+			<div class="x">
 				<br><br>
 				<input type="text" name="searchQuery" class="flatSearch" placeholder="search the library">
 				<input type="submit" value="search" class="flatSearchButton">
@@ -38,23 +44,23 @@
 	<h2>Here are some books to read: </h2>
 	<hr><br>
 	<?php 
-		$q = "SELECT * FROM book ORDER BY RAND() LIMIT 3";
-		$result = $mysqli -> query($q);
-		if ($result)
-		{
-			$images[] = 2;
-			$bookNames[] = 2;
-			$bookAuthors[] = 2;
-			$i = 0;
-			while($row = $result->fetch_assoc()){
+	$q = "SELECT * FROM book ORDER BY RAND() LIMIT 3";
+	$result = $mysqli -> query($q);
+	if ($result)
+	{
+		$images[] = 2;
+		$bookNames[] = 2;
+		$bookAuthors[] = 2;
+		$i = 0;
+		while($row = $result->fetch_assoc()){
 				//storing these in arrays to use later
-				$images[$i] = $row['imageLink']; 
-				$bookNames[$i] = $row['bookName'];
-				$bookAuthors[$i] = $row['bookAuthor'];
-				$i++; 
+			$images[$i] = $row['imageLink']; 
+			$bookNames[$i] = $row['bookName'];
+			$bookAuthors[$i] = $row['bookAuthor'];
+			$i++; 
 
 				//Images on the left followed by descriptions on the right
-				echo "<div><a href='book.php?bookID=". $row['bookID'] ."'><img style='vertical-align:middle;' width=100em src=" . $row['imageLink'] . "></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <span class='flatInvertedLink'><a href='book.php?bookID=". $row['bookID'] ."'>" . $row['bookName'] . "&nbsp&nbsp" . " - " . "&nbsp&nbsp" . $row['bookAuthor'] ."&nbsp". "</a></span></div><br><br>" ;
+			echo "<div><a href='book.php?bookID=". $row['bookID'] ."'><img style='vertical-align:middle;' width=100em src=" . $row['imageLink'] . "></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <span class='flatInvertedLink'><a href='book.php?bookID=". $row['bookID'] ."'>" . $row['bookName'] . "&nbsp&nbsp" . " - " . "&nbsp&nbsp" . $row['bookAuthor'] ."&nbsp". "</a></span></div><br><br>" ;
 				//Same as above, trying to float left so multiple lines of text can appear beside an image
 				/*echo "
 					<div style='width: 400px'>  
@@ -64,9 +70,10 @@
 						</div>      
 					</div>
 					<br style='clear:both' /><br>";*/
-			}
-			?>
-			<br><br>
+				}
+				?>
+				<br><br>
+				
 	<!--<center>
 		//Making the images appear on the top followed by their descriptions underneath
 		<div class="row">
@@ -75,13 +82,13 @@
 			<img width = 300em src=<?php //echo " $images[2]"; ?> >
    		 </div>
 
-   	</center> -->
-<?php
-		}else{
-			echo "There are no books in stock";
-		}
+   		</center> -->
+   		<?php
+   	}else{
+   		echo "There are no books in stock";
+   	}
 
-?>
+   	?>
 <!--
 <div style="width: 400px">  
 	<div style="padding: 5px">
