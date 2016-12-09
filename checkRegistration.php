@@ -49,11 +49,10 @@ if ($fName == '' || $lName == '' ||  $gender == '' || $email =='' || $username =
 		{
 			if($username == $row['username'])
 			{
-				echo "hi";
 				$_SESSION['flagError'] = 1;
 				$_SESSION['errorMessage'] = 'Username is already in use';
 				$usernameError = 1;
-				//header("Location:register.php");
+				header("Location:register.php");
 			}
 
 		}	
