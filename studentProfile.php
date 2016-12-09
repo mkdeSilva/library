@@ -52,7 +52,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 					"<br><br>Username: " . $studentInfo['username'] . 
 					"<br><br>Gender: " . $studentInfo['gender'] . 
 					"<br><br>Age: " . $studentInfo['age'] . 
-					"<br><br>Overdue pay: " . $studentInfo['overduePay'] . "<br><br>"
+					"<br><br>Overdue pay: " . $studentInfo['overduePay'] . "<br><br>" . 
 					"<span class='flatLink'><a href='editStudent.php?editID=$studentID'>Edit Info</a></span>";
 
 					if ($studentInfo['anyRent'] == 1){
