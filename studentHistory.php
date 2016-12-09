@@ -5,7 +5,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 
 ?> 
 
-<!DOCTYPE html>
+<!DOCTYPE html>	
 <html>
 
 
