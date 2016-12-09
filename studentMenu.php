@@ -42,7 +42,6 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 			$result=$mysqli->query($q);
 			if(!$result){
 				echo "Select failed. Error: ".$mysqli->error ;
-				break;
 			}else{
 				?>
 				<center>

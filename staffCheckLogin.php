@@ -1,12 +1,4 @@
-
-<html>
-<title>Logging In</title>
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="design.css">
-<body>
-	<header> <?php require_once('header.php') ?> </header>
-
-	<?php
+<?php
 session_start(); //TO USE session, has to be at the top of the PHP code
 require_once('connect.php');
 
@@ -33,31 +25,19 @@ if ($result)
 		$_SESSION['permission'] = 'admin';
 		header("Location: bookMenu.php");
 		
-
+		
+		
+		
 	}else{
 		
-		?>
-		<br><br><br><hr><br>
-		<center>
-
-			<h2>Wrong username or password</h2>
-			<h2><span class=flatLink><a href="login.php">Go Back.</a></span></h2>
-		</center>
-
-<?php
+	echo "Wrong username or password";	
+	
 	}
-
 }else{
 	
-	?>
-		<br><br><br><hr><br>
-		<center>
-
-			<h2>Wrong username or password</h2>
-			<h2><span class=flatLink><a href="login.php">Go Back.</a></span></h2>
-		</center>
-<?php
+	echo "Wrong username or password";
+	
 }
+
+
 ?>
-</body>
-</html>

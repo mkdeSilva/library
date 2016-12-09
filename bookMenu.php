@@ -85,7 +85,7 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 						<input type="text" name="bookGenre" class="flatInput">
 						<br><br>
 						<label>publication date (yyyy/mm/dd)</label><br>
-						<input type="date" name="bookDate" class="flatInput" placeholder="1999-12-01"> <!-- ------- -->
+						<input type="date" name="bookDate" class="flatInput" placeholder="1999-12-01"> 
 						<br><br>
 						<label>stock</label><br>
 						<input type="text" name="bookStock" class="flatInput">
@@ -107,7 +107,6 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 					$result=$mysqli->query($q);
 					if(!$result){
 						echo "Select failed. Error: ".$mysqli->error ;
-						break;
 					}else{
 						?>
 						<tr>
@@ -177,6 +176,6 @@ require_once('connect.php'); //dont’ know if I need this, check once this page
 				});
 			</script>
 
-		</body>
+	</body>
 
-		</html
+</html

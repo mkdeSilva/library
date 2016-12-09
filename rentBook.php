@@ -56,9 +56,9 @@ $editID = $_POST['bookID'];
 					$insertRentResult = $mysqli -> query($insertRentDetails);
 					//echo $insertRentDetails;
 					require_once('updateBookCopies.php');
-					//echo $insertRentDetails;
+					$insertRentDetails;
 					header("Location: studentProfile.php");
-
+					exit;
 				} else {
 					echo "<center><h2>Sorry, we do not have any copies of that book in our library right now<br><br><span class='flatLink'><a href='catalog.php'>Go back to catalog</a></span></h2></center";
 
