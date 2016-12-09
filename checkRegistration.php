@@ -44,7 +44,7 @@ if ($fName == '' || $lName == '' ||  $gender == '' || $email =='' || $username =
 	if ($member=='student' && $error!=1){
 
 		$usernamesQuery = "SELECT username FROM students";
-		$usernamesResult = $mysqli -> query($usernameQuery);
+		$usernamesResult = $mysqli -> query($usernamesQuery);
 		while($row = $usernamesResult->fetch_assoc())
 		{
 			if($username == $row['username'])
